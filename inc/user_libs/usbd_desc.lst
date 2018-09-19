@@ -1,0 +1,2707 @@
+ARM GAS  /tmp/ccDi7Mwx.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 20, 1	@ Tag_ABI_FP_denormal
+   3              		.eabi_attribute 21, 1	@ Tag_ABI_FP_exceptions
+   4              		.eabi_attribute 23, 3	@ Tag_ABI_FP_number_model
+   5              		.eabi_attribute 24, 1	@ Tag_ABI_align8_needed
+   6              		.eabi_attribute 25, 1	@ Tag_ABI_align8_preserved
+   7              		.eabi_attribute 26, 1	@ Tag_ABI_enum_size
+   8              		.eabi_attribute 30, 4	@ Tag_ABI_optimization_goals
+   9              		.eabi_attribute 34, 1	@ Tag_CPU_unaligned_access
+  10              		.eabi_attribute 18, 4	@ Tag_ABI_PCS_wchar_t
+  11              		.file	"usbd_desc.c"
+  12              	@ GNU C11 (GNU Tools for Arm Embedded Processors 7-2017-q4-major) version 7.2.1 20170904 (release) 
+  13              	@	compiled by GNU C version 4.8.4, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl ve
+  14              	
+  15              	@ GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+  16              	@ options passed:  -I . -I ./inc -I ./inc/CMSIS
+  17              	@ -I STM32F4xx_StdPeriph_Driver/inc -I ./inc/user_libs
+  18              	@ -imultilib thumb/v7e-m
+  19              	@ -iprefix /home/sticky/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/
+  20              	@ -isysroot /home/sticky/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/../arm-none-eabi
+  21              	@ -D__USES_INITFINI__ -D STM32F40XX -D USE_STDPERIPH_DRIVER
+  22              	@ -D RUN_FROM_FLASH=1 inc/user_libs/usbd_desc.c -mcpu=cortex-m4 -mthumb
+  23              	@ -auxbase-strip inc/user_libs/usbd_desc.o -g -gdwarf-2 -Os -Wall
+  24              	@ -Wstrict-prototypes -fomit-frame-pointer -fverbose-asm
+  25              	@ options enabled:  -faggressive-loop-optimizations -falign-jumps
+  26              	@ -falign-labels -falign-loops -fauto-inc-dec -fbranch-count-reg
+  27              	@ -fcaller-saves -fchkp-check-incomplete-type -fchkp-check-read
+  28              	@ -fchkp-check-write -fchkp-instrument-calls -fchkp-narrow-bounds
+  29              	@ -fchkp-optimize -fchkp-store-bounds -fchkp-use-static-bounds
+  30              	@ -fchkp-use-static-const-bounds -fchkp-use-wrappers -fcode-hoisting
+  31              	@ -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
+  32              	@ -fcrossjumping -fcse-follow-jumps -fdefer-pop
+  33              	@ -fdelete-null-pointer-checks -fdevirtualize -fdevirtualize-speculatively
+  34              	@ -fdwarf2-cfi-asm -fearly-inlining -feliminate-unused-debug-types
+  35              	@ -fexpensive-optimizations -fforward-propagate -ffp-int-builtin-inexact
+  36              	@ -ffunction-cse -fgcse -fgcse-lm -fgnu-runtime -fgnu-unique
+  37              	@ -fguess-branch-probability -fhoist-adjacent-loads -fident -fif-conversion
+  38              	@ -fif-conversion2 -findirect-inlining -finline -finline-atomics
+  39              	@ -finline-functions -finline-functions-called-once
+  40              	@ -finline-small-functions -fipa-bit-cp -fipa-cp -fipa-icf
+  41              	@ -fipa-icf-functions -fipa-icf-variables -fipa-profile -fipa-pure-const
+  42              	@ -fipa-ra -fipa-reference -fipa-sra -fipa-vrp -fira-hoist-pressure
+  43              	@ -fira-share-save-slots -fira-share-spill-slots
+  44              	@ -fisolate-erroneous-paths-dereference -fivopts -fkeep-static-consts
+  45              	@ -fleading-underscore -flifetime-dse -flra-remat -flto-odr-type-merging
+  46              	@ -fmath-errno -fmerge-constants -fmerge-debug-strings
+  47              	@ -fmove-loop-invariants -fomit-frame-pointer -foptimize-sibling-calls
+  48              	@ -fpartial-inlining -fpeephole -fpeephole2 -fplt -fprefetch-loop-arrays
+  49              	@ -freg-struct-return -freorder-blocks -freorder-functions
+  50              	@ -frerun-cse-after-loop -fsched-critical-path-heuristic
+  51              	@ -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
+  52              	@ -fsched-last-insn-heuristic -fsched-pressure -fsched-rank-heuristic
+  53              	@ -fsched-spec -fsched-spec-insn-heuristic -fsched-stalled-insns-dep
+  54              	@ -fschedule-insns2 -fsection-anchors -fsemantic-interposition
+  55              	@ -fshow-column -fshrink-wrap-separate -fsigned-zeros
+  56              	@ -fsplit-ivs-in-unroller -fsplit-wide-types -fssa-backprop -fssa-phiopt
+  57              	@ -fstdarg-opt -fstore-merging -fstrict-aliasing -fstrict-overflow
+ARM GAS  /tmp/ccDi7Mwx.s 			page 2
+
+
+  58              	@ -fstrict-volatile-bitfields -fsync-libcalls -fthread-jumps
+  59              	@ -ftoplevel-reorder -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce
+  60              	@ -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-cselim
+  61              	@ -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+  62              	@ -ftree-loop-if-convert -ftree-loop-im -ftree-loop-ivcanon
+  63              	@ -ftree-loop-optimize -ftree-parallelize-loops= -ftree-phiprop -ftree-pre
+  64              	@ -ftree-pta -ftree-reassoc -ftree-scev-cprop -ftree-sink -ftree-slsr
+  65              	@ -ftree-sra -ftree-switch-conversion -ftree-tail-merge -ftree-ter
+  66              	@ -ftree-vrp -funit-at-a-time -fvar-tracking -fvar-tracking-assignments
+  67              	@ -fverbose-asm -fzero-initialized-in-bss -masm-syntax-unified
+  68              	@ -mlittle-endian -mpic-data-is-text-relative -msched-prolog -mthumb
+  69              	@ -munaligned-access -mvectorize-with-neon-quad
+  70              	
+  71              		.text
+  72              	.Ltext0:
+  73              		.cfi_sections	.debug_frame
+  74              		.align	1
+  75              		.global	USBD_USR_DeviceDescriptor
+  76              		.syntax unified
+  77              		.thumb
+  78              		.thumb_func
+  79              		.fpu softvfp
+  80              		.type	USBD_USR_DeviceDescriptor, %function
+  81              	USBD_USR_DeviceDescriptor:
+  82              	.LFB110:
+  83              		.file 1 "inc/user_libs/usbd_desc.c"
+   1:inc/user_libs/usbd_desc.c **** /**
+   2:inc/user_libs/usbd_desc.c ****   ******************************************************************************
+   3:inc/user_libs/usbd_desc.c ****   * @file    usbd_desc.c
+   4:inc/user_libs/usbd_desc.c ****   * @author  MCD Application Team
+   5:inc/user_libs/usbd_desc.c ****   * @version V1.1.0
+   6:inc/user_libs/usbd_desc.c ****   * @date    19-March-2012
+   7:inc/user_libs/usbd_desc.c ****   * @brief   This file provides the USBD descriptors and string formating method.
+   8:inc/user_libs/usbd_desc.c ****   ******************************************************************************
+   9:inc/user_libs/usbd_desc.c ****   * @attention
+  10:inc/user_libs/usbd_desc.c ****   *
+  11:inc/user_libs/usbd_desc.c ****   * <h2><center>&copy; COPYRIGHT 2012 STMicroelectronics</center></h2>
+  12:inc/user_libs/usbd_desc.c ****   *
+  13:inc/user_libs/usbd_desc.c ****   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+  14:inc/user_libs/usbd_desc.c ****   * You may not use this file except in compliance with the License.
+  15:inc/user_libs/usbd_desc.c ****   * You may obtain a copy of the License at:
+  16:inc/user_libs/usbd_desc.c ****   *
+  17:inc/user_libs/usbd_desc.c ****   *        http://www.st.com/software_license_agreement_liberty_v2
+  18:inc/user_libs/usbd_desc.c ****   *
+  19:inc/user_libs/usbd_desc.c ****   * Unless required by applicable law or agreed to in writing, software 
+  20:inc/user_libs/usbd_desc.c ****   * distributed under the License is distributed on an "AS IS" BASIS, 
+  21:inc/user_libs/usbd_desc.c ****   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  22:inc/user_libs/usbd_desc.c ****   * See the License for the specific language governing permissions and
+  23:inc/user_libs/usbd_desc.c ****   * limitations under the License.
+  24:inc/user_libs/usbd_desc.c ****   *
+  25:inc/user_libs/usbd_desc.c ****   ******************************************************************************
+  26:inc/user_libs/usbd_desc.c ****   */ 
+  27:inc/user_libs/usbd_desc.c **** 
+  28:inc/user_libs/usbd_desc.c **** /* Includes ------------------------------------------------------------------*/
+  29:inc/user_libs/usbd_desc.c **** #include "usbd_core.h"
+  30:inc/user_libs/usbd_desc.c **** #include "usbd_desc.h"
+  31:inc/user_libs/usbd_desc.c **** #include "usbd_req.h"
+ARM GAS  /tmp/ccDi7Mwx.s 			page 3
+
+
+  32:inc/user_libs/usbd_desc.c **** #include "usbd_conf.h"
+  33:inc/user_libs/usbd_desc.c **** #include "usb_regs.h"
+  34:inc/user_libs/usbd_desc.c **** 
+  35:inc/user_libs/usbd_desc.c **** /** @addtogroup STM32_USB_OTG_DEVICE_LIBRARY
+  36:inc/user_libs/usbd_desc.c ****   * @{
+  37:inc/user_libs/usbd_desc.c ****   */
+  38:inc/user_libs/usbd_desc.c **** 
+  39:inc/user_libs/usbd_desc.c **** 
+  40:inc/user_libs/usbd_desc.c **** /** @defgroup USBD_DESC 
+  41:inc/user_libs/usbd_desc.c ****   * @brief USBD descriptors module
+  42:inc/user_libs/usbd_desc.c ****   * @{
+  43:inc/user_libs/usbd_desc.c ****   */ 
+  44:inc/user_libs/usbd_desc.c **** 
+  45:inc/user_libs/usbd_desc.c **** /** @defgroup USBD_DESC_Private_TypesDefinitions
+  46:inc/user_libs/usbd_desc.c ****   * @{
+  47:inc/user_libs/usbd_desc.c ****   */ 
+  48:inc/user_libs/usbd_desc.c **** /**
+  49:inc/user_libs/usbd_desc.c ****   * @}
+  50:inc/user_libs/usbd_desc.c ****   */ 
+  51:inc/user_libs/usbd_desc.c **** 
+  52:inc/user_libs/usbd_desc.c **** 
+  53:inc/user_libs/usbd_desc.c **** /** @defgroup USBD_DESC_Private_Defines
+  54:inc/user_libs/usbd_desc.c ****   * @{
+  55:inc/user_libs/usbd_desc.c ****   */ 
+  56:inc/user_libs/usbd_desc.c **** 
+  57:inc/user_libs/usbd_desc.c **** #define USBD_VID                     	0x0483
+  58:inc/user_libs/usbd_desc.c **** #define USBD_PID                     	0x5710
+  59:inc/user_libs/usbd_desc.c **** 
+  60:inc/user_libs/usbd_desc.c **** #define USBD_LANGID_STRING            	0x409
+  61:inc/user_libs/usbd_desc.c **** #define USBD_MANUFACTURER_STRING      	"STicroelectronics"
+  62:inc/user_libs/usbd_desc.c **** 
+  63:inc/user_libs/usbd_desc.c **** #define USBD_PRODUCT_HS_STRING        	"TM USB HID device in HS mode"
+  64:inc/user_libs/usbd_desc.c **** #define USBD_SERIALNUMBER_HS_STRING   	"00000000011B"
+  65:inc/user_libs/usbd_desc.c **** 
+  66:inc/user_libs/usbd_desc.c **** #define USBD_PRODUCT_FS_STRING        	"TM USB HID device in FS mode"
+  67:inc/user_libs/usbd_desc.c **** #define USBD_SERIALNUMBER_FS_STRING   	"00000000011C"
+  68:inc/user_libs/usbd_desc.c **** 
+  69:inc/user_libs/usbd_desc.c **** #define USBD_CONFIGURATION_HS_STRING  	"HID Config"
+  70:inc/user_libs/usbd_desc.c **** #define USBD_INTERFACE_HS_STRING      	"HID Interface"
+  71:inc/user_libs/usbd_desc.c **** 
+  72:inc/user_libs/usbd_desc.c **** #define USBD_CONFIGURATION_FS_STRING  	"HID Config"
+  73:inc/user_libs/usbd_desc.c **** #define USBD_INTERFACE_FS_STRING      	"HID Interface"
+  74:inc/user_libs/usbd_desc.c **** /**
+  75:inc/user_libs/usbd_desc.c ****   * @}
+  76:inc/user_libs/usbd_desc.c ****   */ 
+  77:inc/user_libs/usbd_desc.c **** 
+  78:inc/user_libs/usbd_desc.c **** 
+  79:inc/user_libs/usbd_desc.c **** /** @defgroup USBD_DESC_Private_Macros
+  80:inc/user_libs/usbd_desc.c ****   * @{
+  81:inc/user_libs/usbd_desc.c ****   */ 
+  82:inc/user_libs/usbd_desc.c **** /**
+  83:inc/user_libs/usbd_desc.c ****   * @}
+  84:inc/user_libs/usbd_desc.c ****   */ 
+  85:inc/user_libs/usbd_desc.c **** 
+  86:inc/user_libs/usbd_desc.c **** 
+  87:inc/user_libs/usbd_desc.c **** /** @defgroup USBD_DESC_Private_Variables
+  88:inc/user_libs/usbd_desc.c ****   * @{
+ARM GAS  /tmp/ccDi7Mwx.s 			page 4
+
+
+  89:inc/user_libs/usbd_desc.c ****   */ 
+  90:inc/user_libs/usbd_desc.c **** 
+  91:inc/user_libs/usbd_desc.c **** USBD_DEVICE USR_desc =
+  92:inc/user_libs/usbd_desc.c **** {
+  93:inc/user_libs/usbd_desc.c ****   USBD_USR_DeviceDescriptor,
+  94:inc/user_libs/usbd_desc.c ****   USBD_USR_LangIDStrDescriptor, 
+  95:inc/user_libs/usbd_desc.c ****   USBD_USR_ManufacturerStrDescriptor,
+  96:inc/user_libs/usbd_desc.c ****   USBD_USR_ProductStrDescriptor,
+  97:inc/user_libs/usbd_desc.c ****   USBD_USR_SerialStrDescriptor,
+  98:inc/user_libs/usbd_desc.c ****   USBD_USR_ConfigStrDescriptor,
+  99:inc/user_libs/usbd_desc.c ****   USBD_USR_InterfaceStrDescriptor,
+ 100:inc/user_libs/usbd_desc.c ****   
+ 101:inc/user_libs/usbd_desc.c **** };
+ 102:inc/user_libs/usbd_desc.c **** 
+ 103:inc/user_libs/usbd_desc.c **** #ifdef USB_OTG_HS_INTERNAL_DMA_ENABLED
+ 104:inc/user_libs/usbd_desc.c ****   #if defined ( __ICCARM__ ) /*!< IAR Compiler */
+ 105:inc/user_libs/usbd_desc.c ****     #pragma data_alignment=4   
+ 106:inc/user_libs/usbd_desc.c ****   #endif
+ 107:inc/user_libs/usbd_desc.c **** #endif /* USB_OTG_HS_INTERNAL_DMA_ENABLED */
+ 108:inc/user_libs/usbd_desc.c **** /* USB Standard Device Descriptor */
+ 109:inc/user_libs/usbd_desc.c **** __ALIGN_BEGIN uint8_t USBD_DeviceDesc[USB_SIZ_DEVICE_DESC] __ALIGN_END =
+ 110:inc/user_libs/usbd_desc.c ****   {
+ 111:inc/user_libs/usbd_desc.c ****     0x12,                       /*bLength */
+ 112:inc/user_libs/usbd_desc.c ****     USB_DEVICE_DESCRIPTOR_TYPE, /*bDescriptorType*/
+ 113:inc/user_libs/usbd_desc.c ****     0x00,                       /*bcdUSB */
+ 114:inc/user_libs/usbd_desc.c ****     0x02,
+ 115:inc/user_libs/usbd_desc.c ****     0x00,                       /*bDeviceClass*/
+ 116:inc/user_libs/usbd_desc.c ****     0x00,                       /*bDeviceSubClass*/
+ 117:inc/user_libs/usbd_desc.c ****     0x00,                       /*bDeviceProtocol*/
+ 118:inc/user_libs/usbd_desc.c ****     USB_OTG_MAX_EP0_SIZE,      /*bMaxPacketSize*/
+ 119:inc/user_libs/usbd_desc.c ****     LOBYTE(USBD_VID),           /*idVendor*/
+ 120:inc/user_libs/usbd_desc.c ****     HIBYTE(USBD_VID),           /*idVendor*/
+ 121:inc/user_libs/usbd_desc.c ****     LOBYTE(USBD_PID),           /*idVendor*/
+ 122:inc/user_libs/usbd_desc.c ****     HIBYTE(USBD_PID),           /*idVendor*/
+ 123:inc/user_libs/usbd_desc.c ****     0x00,                       /*bcdDevice rel. 2.00*/
+ 124:inc/user_libs/usbd_desc.c ****     0x02,
+ 125:inc/user_libs/usbd_desc.c ****     USBD_IDX_MFC_STR,           /*Index of manufacturer  string*/
+ 126:inc/user_libs/usbd_desc.c ****     USBD_IDX_PRODUCT_STR,       /*Index of product string*/
+ 127:inc/user_libs/usbd_desc.c ****     USBD_IDX_SERIAL_STR,        /*Index of serial number string*/
+ 128:inc/user_libs/usbd_desc.c ****     USBD_CFG_MAX_NUM            /*bNumConfigurations*/
+ 129:inc/user_libs/usbd_desc.c ****   } ; /* USB_DeviceDescriptor */
+ 130:inc/user_libs/usbd_desc.c **** 
+ 131:inc/user_libs/usbd_desc.c **** #ifdef USB_OTG_HS_INTERNAL_DMA_ENABLED
+ 132:inc/user_libs/usbd_desc.c ****   #if defined ( __ICCARM__ ) /*!< IAR Compiler */
+ 133:inc/user_libs/usbd_desc.c ****     #pragma data_alignment=4   
+ 134:inc/user_libs/usbd_desc.c ****   #endif
+ 135:inc/user_libs/usbd_desc.c **** #endif /* USB_OTG_HS_INTERNAL_DMA_ENABLED */
+ 136:inc/user_libs/usbd_desc.c **** /* USB Standard Device Descriptor */
+ 137:inc/user_libs/usbd_desc.c **** __ALIGN_BEGIN uint8_t USBD_DeviceQualifierDesc[USB_LEN_DEV_QUALIFIER_DESC] __ALIGN_END =
+ 138:inc/user_libs/usbd_desc.c **** {
+ 139:inc/user_libs/usbd_desc.c ****   USB_LEN_DEV_QUALIFIER_DESC,
+ 140:inc/user_libs/usbd_desc.c ****   USB_DESC_TYPE_DEVICE_QUALIFIER,
+ 141:inc/user_libs/usbd_desc.c ****   0x00,
+ 142:inc/user_libs/usbd_desc.c ****   0x02,
+ 143:inc/user_libs/usbd_desc.c ****   0x00,
+ 144:inc/user_libs/usbd_desc.c ****   0x00,
+ 145:inc/user_libs/usbd_desc.c ****   0x00,
+ARM GAS  /tmp/ccDi7Mwx.s 			page 5
+
+
+ 146:inc/user_libs/usbd_desc.c ****   0x40,
+ 147:inc/user_libs/usbd_desc.c ****   0x01,
+ 148:inc/user_libs/usbd_desc.c ****   0x00,
+ 149:inc/user_libs/usbd_desc.c **** };
+ 150:inc/user_libs/usbd_desc.c **** 
+ 151:inc/user_libs/usbd_desc.c **** #ifdef USB_OTG_HS_INTERNAL_DMA_ENABLED
+ 152:inc/user_libs/usbd_desc.c ****   #if defined ( __ICCARM__ ) /*!< IAR Compiler */
+ 153:inc/user_libs/usbd_desc.c ****     #pragma data_alignment=4   
+ 154:inc/user_libs/usbd_desc.c ****   #endif
+ 155:inc/user_libs/usbd_desc.c **** #endif /* USB_OTG_HS_INTERNAL_DMA_ENABLED */
+ 156:inc/user_libs/usbd_desc.c **** /* USB Standard Device Descriptor */
+ 157:inc/user_libs/usbd_desc.c **** __ALIGN_BEGIN uint8_t USBD_LangIDDesc[USB_SIZ_STRING_LANGID] __ALIGN_END =
+ 158:inc/user_libs/usbd_desc.c **** {
+ 159:inc/user_libs/usbd_desc.c ****      USB_SIZ_STRING_LANGID,         
+ 160:inc/user_libs/usbd_desc.c ****      USB_DESC_TYPE_STRING,       
+ 161:inc/user_libs/usbd_desc.c ****      LOBYTE(USBD_LANGID_STRING),
+ 162:inc/user_libs/usbd_desc.c ****      HIBYTE(USBD_LANGID_STRING), 
+ 163:inc/user_libs/usbd_desc.c **** };
+ 164:inc/user_libs/usbd_desc.c **** /**
+ 165:inc/user_libs/usbd_desc.c ****   * @}
+ 166:inc/user_libs/usbd_desc.c ****   */ 
+ 167:inc/user_libs/usbd_desc.c **** 
+ 168:inc/user_libs/usbd_desc.c **** 
+ 169:inc/user_libs/usbd_desc.c **** /** @defgroup USBD_DESC_Private_FunctionPrototypes
+ 170:inc/user_libs/usbd_desc.c ****   * @{
+ 171:inc/user_libs/usbd_desc.c ****   */ 
+ 172:inc/user_libs/usbd_desc.c **** /**
+ 173:inc/user_libs/usbd_desc.c ****   * @}
+ 174:inc/user_libs/usbd_desc.c ****   */ 
+ 175:inc/user_libs/usbd_desc.c **** 
+ 176:inc/user_libs/usbd_desc.c **** 
+ 177:inc/user_libs/usbd_desc.c **** /** @defgroup USBD_DESC_Private_Functions
+ 178:inc/user_libs/usbd_desc.c ****   * @{
+ 179:inc/user_libs/usbd_desc.c ****   */ 
+ 180:inc/user_libs/usbd_desc.c **** 
+ 181:inc/user_libs/usbd_desc.c **** /**
+ 182:inc/user_libs/usbd_desc.c **** * @brief  USBD_USR_DeviceDescriptor 
+ 183:inc/user_libs/usbd_desc.c **** *         return the device descriptor
+ 184:inc/user_libs/usbd_desc.c **** * @param  speed : current device speed
+ 185:inc/user_libs/usbd_desc.c **** * @param  length : pointer to data length variable
+ 186:inc/user_libs/usbd_desc.c **** * @retval pointer to descriptor buffer
+ 187:inc/user_libs/usbd_desc.c **** */
+ 188:inc/user_libs/usbd_desc.c **** uint8_t *  USBD_USR_DeviceDescriptor( uint8_t speed , uint16_t *length)
+ 189:inc/user_libs/usbd_desc.c **** {
+  84              		.loc 1 189 0
+  85              		.cfi_startproc
+  86              		@ args = 0, pretend = 0, frame = 0
+  87              		@ frame_needed = 0, uses_anonymous_args = 0
+  88              		@ link register save eliminated.
+  89              	.LVL0:
+  90              	@ inc/user_libs/usbd_desc.c:190:   *length = sizeof(USBD_DeviceDesc);
+ 190:inc/user_libs/usbd_desc.c ****   *length = sizeof(USBD_DeviceDesc);
+  91              		.loc 1 190 0
+  92 0000 1223     		movs	r3, #18	@ tmp114,
+  93 0002 0B80     		strh	r3, [r1]	@ movhi	@ tmp114, *length_2(D)
+  94              	@ inc/user_libs/usbd_desc.c:192: }
+ 191:inc/user_libs/usbd_desc.c ****   return USBD_DeviceDesc;
+ARM GAS  /tmp/ccDi7Mwx.s 			page 6
+
+
+ 192:inc/user_libs/usbd_desc.c **** }
+  95              		.loc 1 192 0
+  96 0004 0048     		ldr	r0, .L2	@,
+  97              	.LVL1:
+  98 0006 7047     		bx	lr	@
+  99              	.L3:
+ 100              		.align	2
+ 101              	.L2:
+ 102 0008 00000000 		.word	.LANCHOR0
+ 103              		.cfi_endproc
+ 104              	.LFE110:
+ 105              		.size	USBD_USR_DeviceDescriptor, .-USBD_USR_DeviceDescriptor
+ 106              		.align	1
+ 107              		.global	USBD_USR_LangIDStrDescriptor
+ 108              		.syntax unified
+ 109              		.thumb
+ 110              		.thumb_func
+ 111              		.fpu softvfp
+ 112              		.type	USBD_USR_LangIDStrDescriptor, %function
+ 113              	USBD_USR_LangIDStrDescriptor:
+ 114              	.LFB111:
+ 193:inc/user_libs/usbd_desc.c **** 
+ 194:inc/user_libs/usbd_desc.c **** /**
+ 195:inc/user_libs/usbd_desc.c **** * @brief  USBD_USR_LangIDStrDescriptor 
+ 196:inc/user_libs/usbd_desc.c **** *         return the LangID string descriptor
+ 197:inc/user_libs/usbd_desc.c **** * @param  speed : current device speed
+ 198:inc/user_libs/usbd_desc.c **** * @param  length : pointer to data length variable
+ 199:inc/user_libs/usbd_desc.c **** * @retval pointer to descriptor buffer
+ 200:inc/user_libs/usbd_desc.c **** */
+ 201:inc/user_libs/usbd_desc.c **** uint8_t *  USBD_USR_LangIDStrDescriptor( uint8_t speed , uint16_t *length)
+ 202:inc/user_libs/usbd_desc.c **** {
+ 115              		.loc 1 202 0
+ 116              		.cfi_startproc
+ 117              		@ args = 0, pretend = 0, frame = 0
+ 118              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119              		@ link register save eliminated.
+ 120              	.LVL2:
+ 121              	@ inc/user_libs/usbd_desc.c:203:   *length =  sizeof(USBD_LangIDDesc);  
+ 203:inc/user_libs/usbd_desc.c ****   *length =  sizeof(USBD_LangIDDesc);  
+ 122              		.loc 1 203 0
+ 123 000c 0423     		movs	r3, #4	@ tmp114,
+ 124 000e 0B80     		strh	r3, [r1]	@ movhi	@ tmp114, *length_2(D)
+ 125              	@ inc/user_libs/usbd_desc.c:205: }
+ 204:inc/user_libs/usbd_desc.c ****   return USBD_LangIDDesc;
+ 205:inc/user_libs/usbd_desc.c **** }
+ 126              		.loc 1 205 0
+ 127 0010 0048     		ldr	r0, .L5	@,
+ 128              	.LVL3:
+ 129 0012 7047     		bx	lr	@
+ 130              	.L6:
+ 131              		.align	2
+ 132              	.L5:
+ 133 0014 12000000 		.word	.LANCHOR0+18
+ 134              		.cfi_endproc
+ 135              	.LFE111:
+ 136              		.size	USBD_USR_LangIDStrDescriptor, .-USBD_USR_LangIDStrDescriptor
+ 137              		.align	1
+ARM GAS  /tmp/ccDi7Mwx.s 			page 7
+
+
+ 138              		.global	USBD_USR_ManufacturerStrDescriptor
+ 139              		.syntax unified
+ 140              		.thumb
+ 141              		.thumb_func
+ 142              		.fpu softvfp
+ 143              		.type	USBD_USR_ManufacturerStrDescriptor, %function
+ 144              	USBD_USR_ManufacturerStrDescriptor:
+ 145              	.LFB113:
+ 206:inc/user_libs/usbd_desc.c **** 
+ 207:inc/user_libs/usbd_desc.c **** 
+ 208:inc/user_libs/usbd_desc.c **** /**
+ 209:inc/user_libs/usbd_desc.c **** * @brief  USBD_USR_ProductStrDescriptor 
+ 210:inc/user_libs/usbd_desc.c **** *         return the product string descriptor
+ 211:inc/user_libs/usbd_desc.c **** * @param  speed : current device speed
+ 212:inc/user_libs/usbd_desc.c **** * @param  length : pointer to data length variable
+ 213:inc/user_libs/usbd_desc.c **** * @retval pointer to descriptor buffer
+ 214:inc/user_libs/usbd_desc.c **** */
+ 215:inc/user_libs/usbd_desc.c **** uint8_t *  USBD_USR_ProductStrDescriptor( uint8_t speed , uint16_t *length)
+ 216:inc/user_libs/usbd_desc.c **** {
+ 217:inc/user_libs/usbd_desc.c ****  
+ 218:inc/user_libs/usbd_desc.c ****   
+ 219:inc/user_libs/usbd_desc.c ****   if(speed == 0)
+ 220:inc/user_libs/usbd_desc.c ****   {   
+ 221:inc/user_libs/usbd_desc.c ****     USBD_GetString (USBD_PRODUCT_HS_STRING, USBD_StrDesc, length);
+ 222:inc/user_libs/usbd_desc.c ****   }
+ 223:inc/user_libs/usbd_desc.c ****   else
+ 224:inc/user_libs/usbd_desc.c ****   {
+ 225:inc/user_libs/usbd_desc.c ****     USBD_GetString (USBD_PRODUCT_FS_STRING, USBD_StrDesc, length);    
+ 226:inc/user_libs/usbd_desc.c ****   }
+ 227:inc/user_libs/usbd_desc.c ****   return USBD_StrDesc;
+ 228:inc/user_libs/usbd_desc.c **** }
+ 229:inc/user_libs/usbd_desc.c **** 
+ 230:inc/user_libs/usbd_desc.c **** /**
+ 231:inc/user_libs/usbd_desc.c **** * @brief  USBD_USR_ManufacturerStrDescriptor 
+ 232:inc/user_libs/usbd_desc.c **** *         return the manufacturer string descriptor
+ 233:inc/user_libs/usbd_desc.c **** * @param  speed : current device speed
+ 234:inc/user_libs/usbd_desc.c **** * @param  length : pointer to data length variable
+ 235:inc/user_libs/usbd_desc.c **** * @retval pointer to descriptor buffer
+ 236:inc/user_libs/usbd_desc.c **** */
+ 237:inc/user_libs/usbd_desc.c **** uint8_t *  USBD_USR_ManufacturerStrDescriptor( uint8_t speed , uint16_t *length)
+ 238:inc/user_libs/usbd_desc.c **** {
+ 146              		.loc 1 238 0
+ 147              		.cfi_startproc
+ 148              		@ args = 0, pretend = 0, frame = 0
+ 149              		@ frame_needed = 0, uses_anonymous_args = 0
+ 150              	.LVL4:
+ 151 0018 10B5     		push	{r4, lr}	@
+ 152              	.LCFI0:
+ 153              		.cfi_def_cfa_offset 8
+ 154              		.cfi_offset 4, -8
+ 155              		.cfi_offset 14, -4
+ 156              	@ inc/user_libs/usbd_desc.c:239:   USBD_GetString (USBD_MANUFACTURER_STRING, USBD_StrDesc, length);
+ 239:inc/user_libs/usbd_desc.c ****   USBD_GetString (USBD_MANUFACTURER_STRING, USBD_StrDesc, length);
+ 157              		.loc 1 239 0
+ 158 001a 044C     		ldr	r4, .L8	@ tmp113,
+ 159 001c 0448     		ldr	r0, .L8+4	@,
+ 160              	.LVL5:
+ARM GAS  /tmp/ccDi7Mwx.s 			page 8
+
+
+ 161 001e 0A46     		mov	r2, r1	@, length
+ 162 0020 2146     		mov	r1, r4	@, tmp113
+ 163              	.LVL6:
+ 164 0022 FFF7FEFF 		bl	USBD_GetString	@
+ 165              	.LVL7:
+ 166              	@ inc/user_libs/usbd_desc.c:241: }
+ 240:inc/user_libs/usbd_desc.c ****   return USBD_StrDesc;
+ 241:inc/user_libs/usbd_desc.c **** }
+ 167              		.loc 1 241 0
+ 168 0026 2046     		mov	r0, r4	@, tmp113
+ 169 0028 10BD     		pop	{r4, pc}	@
+ 170              	.L9:
+ 171 002a 00BF     		.align	2
+ 172              	.L8:
+ 173 002c 00000000 		.word	USBD_StrDesc
+ 174 0030 00000000 		.word	.LC0
+ 175              		.cfi_endproc
+ 176              	.LFE113:
+ 177              		.size	USBD_USR_ManufacturerStrDescriptor, .-USBD_USR_ManufacturerStrDescriptor
+ 178              		.align	1
+ 179              		.global	USBD_USR_ProductStrDescriptor
+ 180              		.syntax unified
+ 181              		.thumb
+ 182              		.thumb_func
+ 183              		.fpu softvfp
+ 184              		.type	USBD_USR_ProductStrDescriptor, %function
+ 185              	USBD_USR_ProductStrDescriptor:
+ 186              	.LFB112:
+ 216:inc/user_libs/usbd_desc.c ****  
+ 187              		.loc 1 216 0
+ 188              		.cfi_startproc
+ 189              		@ args = 0, pretend = 0, frame = 0
+ 190              		@ frame_needed = 0, uses_anonymous_args = 0
+ 191              	.LVL8:
+ 192 0034 0A46     		mov	r2, r1	@ length, length
+ 193 0036 08B5     		push	{r3, lr}	@
+ 194              	.LCFI1:
+ 195              		.cfi_def_cfa_offset 8
+ 196              		.cfi_offset 3, -8
+ 197              		.cfi_offset 14, -4
+ 198              	.LBB4:
+ 199              	.LBB5:
+ 200              	@ inc/user_libs/usbd_desc.c:221:     USBD_GetString (USBD_PRODUCT_HS_STRING, USBD_StrDesc, length);
+ 221:inc/user_libs/usbd_desc.c ****   }
+ 201              		.loc 1 221 0
+ 202 0038 0449     		ldr	r1, .L14	@,
+ 203              	.LVL9:
+ 204              	.LBE5:
+ 205              	.LBE4:
+ 206              	@ inc/user_libs/usbd_desc.c:219:   if(speed == 0)
+ 219:inc/user_libs/usbd_desc.c ****   {   
+ 207              		.loc 1 219 0
+ 208 003a 20B9     		cbnz	r0, .L11	@ speed,
+ 209              	.LVL10:
+ 210              	.LBB7:
+ 211              	.LBB6:
+ 212              	@ inc/user_libs/usbd_desc.c:221:     USBD_GetString (USBD_PRODUCT_HS_STRING, USBD_StrDesc, length);
+ARM GAS  /tmp/ccDi7Mwx.s 			page 9
+
+
+ 221:inc/user_libs/usbd_desc.c ****   }
+ 213              		.loc 1 221 0
+ 214 003c 0448     		ldr	r0, .L14+4	@,
+ 215              	.LVL11:
+ 216              	.L13:
+ 217              	.LBE6:
+ 218              	.LBE7:
+ 219              	@ inc/user_libs/usbd_desc.c:225:     USBD_GetString (USBD_PRODUCT_FS_STRING, USBD_StrDesc, length);
+ 225:inc/user_libs/usbd_desc.c ****   }
+ 220              		.loc 1 225 0
+ 221 003e FFF7FEFF 		bl	USBD_GetString	@
+ 222              	.LVL12:
+ 223              	@ inc/user_libs/usbd_desc.c:228: }
+ 228:inc/user_libs/usbd_desc.c **** 
+ 224              		.loc 1 228 0
+ 225 0042 0248     		ldr	r0, .L14	@,
+ 226 0044 08BD     		pop	{r3, pc}	@
+ 227              	.LVL13:
+ 228              	.L11:
+ 229              	@ inc/user_libs/usbd_desc.c:225:     USBD_GetString (USBD_PRODUCT_FS_STRING, USBD_StrDesc, length);
+ 225:inc/user_libs/usbd_desc.c ****   }
+ 230              		.loc 1 225 0
+ 231 0046 0348     		ldr	r0, .L14+8	@,
+ 232              	.LVL14:
+ 233 0048 F9E7     		b	.L13	@
+ 234              	.L15:
+ 235 004a 00BF     		.align	2
+ 236              	.L14:
+ 237 004c 00000000 		.word	USBD_StrDesc
+ 238 0050 12000000 		.word	.LC1
+ 239 0054 2F000000 		.word	.LC2
+ 240              		.cfi_endproc
+ 241              	.LFE112:
+ 242              		.size	USBD_USR_ProductStrDescriptor, .-USBD_USR_ProductStrDescriptor
+ 243              		.align	1
+ 244              		.global	USBD_USR_SerialStrDescriptor
+ 245              		.syntax unified
+ 246              		.thumb
+ 247              		.thumb_func
+ 248              		.fpu softvfp
+ 249              		.type	USBD_USR_SerialStrDescriptor, %function
+ 250              	USBD_USR_SerialStrDescriptor:
+ 251              	.LFB114:
+ 242:inc/user_libs/usbd_desc.c **** 
+ 243:inc/user_libs/usbd_desc.c **** /**
+ 244:inc/user_libs/usbd_desc.c **** * @brief  USBD_USR_SerialStrDescriptor 
+ 245:inc/user_libs/usbd_desc.c **** *         return the serial number string descriptor
+ 246:inc/user_libs/usbd_desc.c **** * @param  speed : current device speed
+ 247:inc/user_libs/usbd_desc.c **** * @param  length : pointer to data length variable
+ 248:inc/user_libs/usbd_desc.c **** * @retval pointer to descriptor buffer
+ 249:inc/user_libs/usbd_desc.c **** */
+ 250:inc/user_libs/usbd_desc.c **** uint8_t *  USBD_USR_SerialStrDescriptor( uint8_t speed , uint16_t *length)
+ 251:inc/user_libs/usbd_desc.c **** {
+ 252              		.loc 1 251 0
+ 253              		.cfi_startproc
+ 254              		@ args = 0, pretend = 0, frame = 0
+ 255              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccDi7Mwx.s 			page 10
+
+
+ 256              	.LVL15:
+ 257 0058 0A46     		mov	r2, r1	@ length, length
+ 258 005a 08B5     		push	{r3, lr}	@
+ 259              	.LCFI2:
+ 260              		.cfi_def_cfa_offset 8
+ 261              		.cfi_offset 3, -8
+ 262              		.cfi_offset 14, -4
+ 263              	.LBB10:
+ 264              	.LBB11:
+ 265              	@ inc/user_libs/usbd_desc.c:254:     USBD_GetString (USBD_SERIALNUMBER_HS_STRING, USBD_StrDesc, len
+ 252:inc/user_libs/usbd_desc.c ****   if(speed  == USB_OTG_SPEED_HIGH)
+ 253:inc/user_libs/usbd_desc.c ****   {    
+ 254:inc/user_libs/usbd_desc.c ****     USBD_GetString (USBD_SERIALNUMBER_HS_STRING, USBD_StrDesc, length);
+ 266              		.loc 1 254 0
+ 267 005c 0449     		ldr	r1, .L20	@,
+ 268              	.LVL16:
+ 269              	.LBE11:
+ 270              	.LBE10:
+ 271              	@ inc/user_libs/usbd_desc.c:252:   if(speed  == USB_OTG_SPEED_HIGH)
+ 252:inc/user_libs/usbd_desc.c ****   if(speed  == USB_OTG_SPEED_HIGH)
+ 272              		.loc 1 252 0
+ 273 005e 20B9     		cbnz	r0, .L17	@ speed,
+ 274              	.LVL17:
+ 275              	.LBB13:
+ 276              	.LBB12:
+ 277              	@ inc/user_libs/usbd_desc.c:254:     USBD_GetString (USBD_SERIALNUMBER_HS_STRING, USBD_StrDesc, len
+ 278              		.loc 1 254 0
+ 279 0060 0448     		ldr	r0, .L20+4	@,
+ 280              	.LVL18:
+ 281              	.L19:
+ 282              	.LBE12:
+ 283              	.LBE13:
+ 284              	@ inc/user_libs/usbd_desc.c:258:     USBD_GetString (USBD_SERIALNUMBER_FS_STRING, USBD_StrDesc, len
+ 255:inc/user_libs/usbd_desc.c ****   }
+ 256:inc/user_libs/usbd_desc.c ****   else
+ 257:inc/user_libs/usbd_desc.c ****   {
+ 258:inc/user_libs/usbd_desc.c ****     USBD_GetString (USBD_SERIALNUMBER_FS_STRING, USBD_StrDesc, length);    
+ 285              		.loc 1 258 0
+ 286 0062 FFF7FEFF 		bl	USBD_GetString	@
+ 287              	.LVL19:
+ 288              	@ inc/user_libs/usbd_desc.c:261: }
+ 259:inc/user_libs/usbd_desc.c ****   }
+ 260:inc/user_libs/usbd_desc.c ****   return USBD_StrDesc;
+ 261:inc/user_libs/usbd_desc.c **** }
+ 289              		.loc 1 261 0
+ 290 0066 0248     		ldr	r0, .L20	@,
+ 291 0068 08BD     		pop	{r3, pc}	@
+ 292              	.LVL20:
+ 293              	.L17:
+ 294              	@ inc/user_libs/usbd_desc.c:258:     USBD_GetString (USBD_SERIALNUMBER_FS_STRING, USBD_StrDesc, len
+ 258:inc/user_libs/usbd_desc.c ****   }
+ 295              		.loc 1 258 0
+ 296 006a 0348     		ldr	r0, .L20+8	@,
+ 297              	.LVL21:
+ 298 006c F9E7     		b	.L19	@
+ 299              	.L21:
+ 300 006e 00BF     		.align	2
+ARM GAS  /tmp/ccDi7Mwx.s 			page 11
+
+
+ 301              	.L20:
+ 302 0070 00000000 		.word	USBD_StrDesc
+ 303 0074 4C000000 		.word	.LC3
+ 304 0078 59000000 		.word	.LC4
+ 305              		.cfi_endproc
+ 306              	.LFE114:
+ 307              		.size	USBD_USR_SerialStrDescriptor, .-USBD_USR_SerialStrDescriptor
+ 308              		.align	1
+ 309              		.global	USBD_USR_ConfigStrDescriptor
+ 310              		.syntax unified
+ 311              		.thumb
+ 312              		.thumb_func
+ 313              		.fpu softvfp
+ 314              		.type	USBD_USR_ConfigStrDescriptor, %function
+ 315              	USBD_USR_ConfigStrDescriptor:
+ 316              	.LFB115:
+ 262:inc/user_libs/usbd_desc.c **** 
+ 263:inc/user_libs/usbd_desc.c **** /**
+ 264:inc/user_libs/usbd_desc.c **** * @brief  USBD_USR_ConfigStrDescriptor 
+ 265:inc/user_libs/usbd_desc.c **** *         return the configuration string descriptor
+ 266:inc/user_libs/usbd_desc.c **** * @param  speed : current device speed
+ 267:inc/user_libs/usbd_desc.c **** * @param  length : pointer to data length variable
+ 268:inc/user_libs/usbd_desc.c **** * @retval pointer to descriptor buffer
+ 269:inc/user_libs/usbd_desc.c **** */
+ 270:inc/user_libs/usbd_desc.c **** uint8_t *  USBD_USR_ConfigStrDescriptor( uint8_t speed , uint16_t *length)
+ 271:inc/user_libs/usbd_desc.c **** {
+ 317              		.loc 1 271 0
+ 318              		.cfi_startproc
+ 319              		@ args = 0, pretend = 0, frame = 0
+ 320              		@ frame_needed = 0, uses_anonymous_args = 0
+ 321              	.LVL22:
+ 322 007c 10B5     		push	{r4, lr}	@
+ 323              	.LCFI3:
+ 324              		.cfi_def_cfa_offset 8
+ 325              		.cfi_offset 4, -8
+ 326              		.cfi_offset 14, -4
+ 327              	.LBB16:
+ 328              	.LBB17:
+ 329              	@ inc/user_libs/usbd_desc.c:274:     USBD_GetString (USBD_CONFIGURATION_HS_STRING, USBD_StrDesc, le
+ 272:inc/user_libs/usbd_desc.c ****   if(speed  == USB_OTG_SPEED_HIGH)
+ 273:inc/user_libs/usbd_desc.c ****   {  
+ 274:inc/user_libs/usbd_desc.c ****     USBD_GetString (USBD_CONFIGURATION_HS_STRING, USBD_StrDesc, length);
+ 330              		.loc 1 274 0
+ 331 007e 044C     		ldr	r4, .L23	@ tmp113,
+ 332 0080 0448     		ldr	r0, .L23+4	@,
+ 333              	.LVL23:
+ 334 0082 0A46     		mov	r2, r1	@, length
+ 335 0084 2146     		mov	r1, r4	@, tmp113
+ 336              	.LVL24:
+ 337 0086 FFF7FEFF 		bl	USBD_GetString	@
+ 338              	.LVL25:
+ 339              	.LBE17:
+ 340              	.LBE16:
+ 341              	@ inc/user_libs/usbd_desc.c:281: }
+ 275:inc/user_libs/usbd_desc.c ****   }
+ 276:inc/user_libs/usbd_desc.c ****   else
+ 277:inc/user_libs/usbd_desc.c ****   {
+ARM GAS  /tmp/ccDi7Mwx.s 			page 12
+
+
+ 278:inc/user_libs/usbd_desc.c ****     USBD_GetString (USBD_CONFIGURATION_FS_STRING, USBD_StrDesc, length); 
+ 279:inc/user_libs/usbd_desc.c ****   }
+ 280:inc/user_libs/usbd_desc.c ****   return USBD_StrDesc;  
+ 281:inc/user_libs/usbd_desc.c **** }
+ 342              		.loc 1 281 0
+ 343 008a 2046     		mov	r0, r4	@, tmp113
+ 344 008c 10BD     		pop	{r4, pc}	@
+ 345              	.L24:
+ 346 008e 00BF     		.align	2
+ 347              	.L23:
+ 348 0090 00000000 		.word	USBD_StrDesc
+ 349 0094 66000000 		.word	.LC5
+ 350              		.cfi_endproc
+ 351              	.LFE115:
+ 352              		.size	USBD_USR_ConfigStrDescriptor, .-USBD_USR_ConfigStrDescriptor
+ 353              		.align	1
+ 354              		.global	USBD_USR_InterfaceStrDescriptor
+ 355              		.syntax unified
+ 356              		.thumb
+ 357              		.thumb_func
+ 358              		.fpu softvfp
+ 359              		.type	USBD_USR_InterfaceStrDescriptor, %function
+ 360              	USBD_USR_InterfaceStrDescriptor:
+ 361              	.LFB116:
+ 282:inc/user_libs/usbd_desc.c **** 
+ 283:inc/user_libs/usbd_desc.c **** 
+ 284:inc/user_libs/usbd_desc.c **** /**
+ 285:inc/user_libs/usbd_desc.c **** * @brief  USBD_USR_InterfaceStrDescriptor 
+ 286:inc/user_libs/usbd_desc.c **** *         return the interface string descriptor
+ 287:inc/user_libs/usbd_desc.c **** * @param  speed : current device speed
+ 288:inc/user_libs/usbd_desc.c **** * @param  length : pointer to data length variable
+ 289:inc/user_libs/usbd_desc.c **** * @retval pointer to descriptor buffer
+ 290:inc/user_libs/usbd_desc.c **** */
+ 291:inc/user_libs/usbd_desc.c **** uint8_t *  USBD_USR_InterfaceStrDescriptor( uint8_t speed , uint16_t *length)
+ 292:inc/user_libs/usbd_desc.c **** {
+ 362              		.loc 1 292 0
+ 363              		.cfi_startproc
+ 364              		@ args = 0, pretend = 0, frame = 0
+ 365              		@ frame_needed = 0, uses_anonymous_args = 0
+ 366              	.LVL26:
+ 367 0098 10B5     		push	{r4, lr}	@
+ 368              	.LCFI4:
+ 369              		.cfi_def_cfa_offset 8
+ 370              		.cfi_offset 4, -8
+ 371              		.cfi_offset 14, -4
+ 372              	.LBB20:
+ 373              	.LBB21:
+ 374              	@ inc/user_libs/usbd_desc.c:295:     USBD_GetString (USBD_INTERFACE_HS_STRING, USBD_StrDesc, length
+ 293:inc/user_libs/usbd_desc.c ****   if(speed == 0)
+ 294:inc/user_libs/usbd_desc.c ****   {
+ 295:inc/user_libs/usbd_desc.c ****     USBD_GetString (USBD_INTERFACE_HS_STRING, USBD_StrDesc, length);
+ 375              		.loc 1 295 0
+ 376 009a 044C     		ldr	r4, .L26	@ tmp113,
+ 377 009c 0448     		ldr	r0, .L26+4	@,
+ 378              	.LVL27:
+ 379 009e 0A46     		mov	r2, r1	@, length
+ 380 00a0 2146     		mov	r1, r4	@, tmp113
+ARM GAS  /tmp/ccDi7Mwx.s 			page 13
+
+
+ 381              	.LVL28:
+ 382 00a2 FFF7FEFF 		bl	USBD_GetString	@
+ 383              	.LVL29:
+ 384              	.LBE21:
+ 385              	.LBE20:
+ 386              	@ inc/user_libs/usbd_desc.c:302: }
+ 296:inc/user_libs/usbd_desc.c ****   }
+ 297:inc/user_libs/usbd_desc.c ****   else
+ 298:inc/user_libs/usbd_desc.c ****   {
+ 299:inc/user_libs/usbd_desc.c ****     USBD_GetString (USBD_INTERFACE_FS_STRING, USBD_StrDesc, length);
+ 300:inc/user_libs/usbd_desc.c ****   }
+ 301:inc/user_libs/usbd_desc.c ****   return USBD_StrDesc;  
+ 302:inc/user_libs/usbd_desc.c **** }
+ 387              		.loc 1 302 0
+ 388 00a6 2046     		mov	r0, r4	@, tmp113
+ 389 00a8 10BD     		pop	{r4, pc}	@
+ 390              	.L27:
+ 391 00aa 00BF     		.align	2
+ 392              	.L26:
+ 393 00ac 00000000 		.word	USBD_StrDesc
+ 394 00b0 71000000 		.word	.LC6
+ 395              		.cfi_endproc
+ 396              	.LFE116:
+ 397              		.size	USBD_USR_InterfaceStrDescriptor, .-USBD_USR_InterfaceStrDescriptor
+ 398              		.global	USBD_LangIDDesc
+ 399              		.global	USBD_DeviceQualifierDesc
+ 400              		.global	USBD_DeviceDesc
+ 401              		.global	USR_desc
+ 402              		.data
+ 403              		.align	2
+ 404              		.set	.LANCHOR0,. + 0
+ 405              		.type	USBD_DeviceDesc, %object
+ 406              		.size	USBD_DeviceDesc, 18
+ 407              	USBD_DeviceDesc:
+ 408 0000 12       		.byte	18
+ 409 0001 01       		.byte	1
+ 410 0002 00       		.byte	0
+ 411 0003 02       		.byte	2
+ 412 0004 00       		.byte	0
+ 413 0005 00       		.byte	0
+ 414 0006 00       		.byte	0
+ 415 0007 40       		.byte	64
+ 416 0008 83       		.byte	-125
+ 417 0009 04       		.byte	4
+ 418 000a 10       		.byte	16
+ 419 000b 57       		.byte	87
+ 420 000c 00       		.byte	0
+ 421 000d 02       		.byte	2
+ 422 000e 01       		.byte	1
+ 423 000f 02       		.byte	2
+ 424 0010 03       		.byte	3
+ 425 0011 01       		.byte	1
+ 426              		.type	USBD_LangIDDesc, %object
+ 427              		.size	USBD_LangIDDesc, 4
+ 428              	USBD_LangIDDesc:
+ 429 0012 04       		.byte	4
+ 430 0013 03       		.byte	3
+ARM GAS  /tmp/ccDi7Mwx.s 			page 14
+
+
+ 431 0014 09       		.byte	9
+ 432 0015 04       		.byte	4
+ 433              		.type	USBD_DeviceQualifierDesc, %object
+ 434              		.size	USBD_DeviceQualifierDesc, 10
+ 435              	USBD_DeviceQualifierDesc:
+ 436 0016 0A       		.byte	10
+ 437 0017 06       		.byte	6
+ 438 0018 00       		.byte	0
+ 439 0019 02       		.byte	2
+ 440 001a 00       		.byte	0
+ 441 001b 00       		.byte	0
+ 442 001c 00       		.byte	0
+ 443 001d 40       		.byte	64
+ 444 001e 01       		.byte	1
+ 445 001f 00       		.byte	0
+ 446              		.type	USR_desc, %object
+ 447              		.size	USR_desc, 28
+ 448              	USR_desc:
+ 449              	@ GetDeviceDescriptor:
+ 450 0020 00000000 		.word	USBD_USR_DeviceDescriptor
+ 451              	@ GetLangIDStrDescriptor:
+ 452 0024 00000000 		.word	USBD_USR_LangIDStrDescriptor
+ 453              	@ GetManufacturerStrDescriptor:
+ 454 0028 00000000 		.word	USBD_USR_ManufacturerStrDescriptor
+ 455              	@ GetProductStrDescriptor:
+ 456 002c 00000000 		.word	USBD_USR_ProductStrDescriptor
+ 457              	@ GetSerialStrDescriptor:
+ 458 0030 00000000 		.word	USBD_USR_SerialStrDescriptor
+ 459              	@ GetConfigurationStrDescriptor:
+ 460 0034 00000000 		.word	USBD_USR_ConfigStrDescriptor
+ 461              	@ GetInterfaceStrDescriptor:
+ 462 0038 00000000 		.word	USBD_USR_InterfaceStrDescriptor
+ 463              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 464              	.LC0:
+ 465 0000 53546963 		.ascii	"STicroelectronics\000"
+ 465      726F656C 
+ 465      65637472 
+ 465      6F6E6963 
+ 465      7300
+ 466              	.LC1:
+ 467 0012 544D2055 		.ascii	"TM USB HID device in HS mode\000"
+ 467      53422048 
+ 467      49442064 
+ 467      65766963 
+ 467      6520696E 
+ 468              	.LC2:
+ 469 002f 544D2055 		.ascii	"TM USB HID device in FS mode\000"
+ 469      53422048 
+ 469      49442064 
+ 469      65766963 
+ 469      6520696E 
+ 470              	.LC3:
+ 471 004c 30303030 		.ascii	"00000000011B\000"
+ 471      30303030 
+ 471      30313142 
+ 471      00
+ 472              	.LC4:
+ARM GAS  /tmp/ccDi7Mwx.s 			page 15
+
+
+ 473 0059 30303030 		.ascii	"00000000011C\000"
+ 473      30303030 
+ 473      30313143 
+ 473      00
+ 474              	.LC5:
+ 475 0066 48494420 		.ascii	"HID Config\000"
+ 475      436F6E66 
+ 475      696700
+ 476              	.LC6:
+ 477 0071 48494420 		.ascii	"HID Interface\000"
+ 477      496E7465 
+ 477      72666163 
+ 477      6500
+ 478              		.text
+ 479              	.Letext0:
+ 480              		.file 2 "/home/sticky/opt/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_default
+ 481              		.file 3 "/home/sticky/opt/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_stdint.h"
+ 482              		.file 4 "./inc/CMSIS/core_cm4.h"
+ 483              		.file 5 "./inc/system_stm32f4xx.h"
+ 484              		.file 6 "inc/user_libs/usb_core.h"
+ 485              		.file 7 "inc/user_libs/usbd_desc.h"
+ 486              		.file 8 "inc/user_libs/usbd_req.h"
+ 487              		.section	.debug_info,"",%progbits
+ 488              	.Ldebug_info0:
+ 489 0000 4B050000 		.4byte	0x54b
+ 490 0004 0200     		.2byte	0x2
+ 491 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 492 000a 04       		.byte	0x4
+ 493 000b 01       		.uleb128 0x1
+ 494 000c 58000000 		.4byte	.LASF42
+ 495 0010 0C       		.byte	0xc
+ 496 0011 73030000 		.4byte	.LASF43
+ 497 0015 08020000 		.4byte	.LASF44
+ 498 0019 00000000 		.4byte	.Ltext0
+ 499 001d B4000000 		.4byte	.Letext0
+ 500 0021 00000000 		.4byte	.Ldebug_line0
+ 501 0025 02       		.uleb128 0x2
+ 502 0026 01       		.byte	0x1
+ 503 0027 06       		.byte	0x6
+ 504 0028 8D030000 		.4byte	.LASF0
+ 505 002c 03       		.uleb128 0x3
+ 506 002d 00000000 		.4byte	.LASF3
+ 507 0031 02       		.byte	0x2
+ 508 0032 2B       		.byte	0x2b
+ 509 0033 37000000 		.4byte	0x37
+ 510 0037 02       		.uleb128 0x2
+ 511 0038 01       		.byte	0x1
+ 512 0039 08       		.byte	0x8
+ 513 003a 02010000 		.4byte	.LASF1
+ 514 003e 02       		.uleb128 0x2
+ 515 003f 02       		.byte	0x2
+ 516 0040 05       		.byte	0x5
+ 517 0041 2E030000 		.4byte	.LASF2
+ 518 0045 03       		.uleb128 0x3
+ 519 0046 9D010000 		.4byte	.LASF4
+ 520 004a 02       		.byte	0x2
+ 521 004b 39       		.byte	0x39
+ARM GAS  /tmp/ccDi7Mwx.s 			page 16
+
+
+ 522 004c 50000000 		.4byte	0x50
+ 523 0050 02       		.uleb128 0x2
+ 524 0051 02       		.byte	0x2
+ 525 0052 07       		.byte	0x7
+ 526 0053 3C010000 		.4byte	.LASF5
+ 527 0057 03       		.uleb128 0x3
+ 528 0058 20000000 		.4byte	.LASF6
+ 529 005c 02       		.byte	0x2
+ 530 005d 4D       		.byte	0x4d
+ 531 005e 62000000 		.4byte	0x62
+ 532 0062 02       		.uleb128 0x2
+ 533 0063 04       		.byte	0x4
+ 534 0064 05       		.byte	0x5
+ 535 0065 2A000000 		.4byte	.LASF7
+ 536 0069 03       		.uleb128 0x3
+ 537 006a EE010000 		.4byte	.LASF8
+ 538 006e 02       		.byte	0x2
+ 539 006f 4F       		.byte	0x4f
+ 540 0070 74000000 		.4byte	0x74
+ 541 0074 02       		.uleb128 0x2
+ 542 0075 04       		.byte	0x4
+ 543 0076 07       		.byte	0x7
+ 544 0077 A8010000 		.4byte	.LASF9
+ 545 007b 02       		.uleb128 0x2
+ 546 007c 08       		.byte	0x8
+ 547 007d 05       		.byte	0x5
+ 548 007e DF020000 		.4byte	.LASF10
+ 549 0082 02       		.uleb128 0x2
+ 550 0083 08       		.byte	0x8
+ 551 0084 07       		.byte	0x7
+ 552 0085 3D020000 		.4byte	.LASF11
+ 553 0089 04       		.uleb128 0x4
+ 554 008a 04       		.byte	0x4
+ 555 008b 05       		.byte	0x5
+ 556 008c 696E7400 		.ascii	"int\000"
+ 557 0090 02       		.uleb128 0x2
+ 558 0091 04       		.byte	0x4
+ 559 0092 07       		.byte	0x7
+ 560 0093 30020000 		.4byte	.LASF12
+ 561 0097 03       		.uleb128 0x3
+ 562 0098 54020000 		.4byte	.LASF13
+ 563 009c 03       		.byte	0x3
+ 564 009d 18       		.byte	0x18
+ 565 009e 2C000000 		.4byte	0x2c
+ 566 00a2 03       		.uleb128 0x3
+ 567 00a3 38030000 		.4byte	.LASF14
+ 568 00a7 03       		.byte	0x3
+ 569 00a8 24       		.byte	0x24
+ 570 00a9 45000000 		.4byte	0x45
+ 571 00ad 03       		.uleb128 0x3
+ 572 00ae D7020000 		.4byte	.LASF15
+ 573 00b2 03       		.byte	0x3
+ 574 00b3 2C       		.byte	0x2c
+ 575 00b4 57000000 		.4byte	0x57
+ 576 00b8 05       		.uleb128 0x5
+ 577 00b9 AD000000 		.4byte	0xad
+ 578 00bd 03       		.uleb128 0x3
+ARM GAS  /tmp/ccDi7Mwx.s 			page 17
+
+
+ 579 00be 41030000 		.4byte	.LASF16
+ 580 00c2 03       		.byte	0x3
+ 581 00c3 30       		.byte	0x30
+ 582 00c4 69000000 		.4byte	0x69
+ 583 00c8 06       		.uleb128 0x6
+ 584 00c9 6C010000 		.4byte	.LASF17
+ 585 00cd 04       		.byte	0x4
+ 586 00ce 1A05     		.2byte	0x51a
+ 587 00d0 B8000000 		.4byte	0xb8
+ 588 00d4 01       		.byte	0x1
+ 589 00d5 01       		.byte	0x1
+ 590 00d6 07       		.uleb128 0x7
+ 591 00d7 ED020000 		.4byte	.LASF18
+ 592 00db 05       		.byte	0x5
+ 593 00dc 3B       		.byte	0x3b
+ 594 00dd BD000000 		.4byte	0xbd
+ 595 00e1 01       		.byte	0x1
+ 596 00e2 01       		.byte	0x1
+ 597 00e3 08       		.uleb128 0x8
+ 598 00e4 04       		.byte	0x4
+ 599 00e5 97000000 		.4byte	0x97
+ 600 00e9 09       		.uleb128 0x9
+ 601 00ea 10000000 		.4byte	.LASF45
+ 602 00ee 1C       		.byte	0x1c
+ 603 00ef 06       		.byte	0x6
+ 604 00f0 BD       		.byte	0xbd
+ 605 00f1 58010000 		.4byte	0x158
+ 606 00f5 0A       		.uleb128 0xa
+ 607 00f6 89010000 		.4byte	.LASF19
+ 608 00fa 06       		.byte	0x6
+ 609 00fb BF       		.byte	0xbf
+ 610 00fc 73010000 		.4byte	0x173
+ 611 0100 02       		.byte	0x2
+ 612 0101 23       		.byte	0x23
+ 613 0102 00       		.uleb128 0
+ 614 0103 0A       		.uleb128 0xa
+ 615 0104 99030000 		.4byte	.LASF20
+ 616 0108 06       		.byte	0x6
+ 617 0109 C0       		.byte	0xc0
+ 618 010a 73010000 		.4byte	0x173
+ 619 010e 02       		.byte	0x2
+ 620 010f 23       		.byte	0x23
+ 621 0110 04       		.uleb128 0x4
+ 622 0111 0A       		.uleb128 0xa
+ 623 0112 4F010000 		.4byte	.LASF21
+ 624 0116 06       		.byte	0x6
+ 625 0117 C1       		.byte	0xc1
+ 626 0118 73010000 		.4byte	0x173
+ 627 011c 02       		.byte	0x2
+ 628 011d 23       		.byte	0x23
+ 629 011e 08       		.uleb128 0x8
+ 630 011f 0A       		.uleb128 0xa
+ 631 0120 33000000 		.4byte	.LASF22
+ 632 0124 06       		.byte	0x6
+ 633 0125 C2       		.byte	0xc2
+ 634 0126 73010000 		.4byte	0x173
+ 635 012a 02       		.byte	0x2
+ARM GAS  /tmp/ccDi7Mwx.s 			page 18
+
+
+ 636 012b 23       		.byte	0x23
+ 637 012c 0C       		.uleb128 0xc
+ 638 012d 0A       		.uleb128 0xa
+ 639 012e FD020000 		.4byte	.LASF23
+ 640 0132 06       		.byte	0x6
+ 641 0133 C3       		.byte	0xc3
+ 642 0134 73010000 		.4byte	0x173
+ 643 0138 02       		.byte	0x2
+ 644 0139 23       		.byte	0x23
+ 645 013a 10       		.uleb128 0x10
+ 646 013b 0A       		.uleb128 0xa
+ 647 013c 96020000 		.4byte	.LASF24
+ 648 0140 06       		.byte	0x6
+ 649 0141 C4       		.byte	0xc4
+ 650 0142 73010000 		.4byte	0x173
+ 651 0146 02       		.byte	0x2
+ 652 0147 23       		.byte	0x23
+ 653 0148 14       		.uleb128 0x14
+ 654 0149 0A       		.uleb128 0xa
+ 655 014a 14030000 		.4byte	.LASF25
+ 656 014e 06       		.byte	0x6
+ 657 014f C5       		.byte	0xc5
+ 658 0150 73010000 		.4byte	0x173
+ 659 0154 02       		.byte	0x2
+ 660 0155 23       		.byte	0x23
+ 661 0156 18       		.uleb128 0x18
+ 662 0157 00       		.byte	0
+ 663 0158 0B       		.uleb128 0xb
+ 664 0159 01       		.byte	0x1
+ 665 015a E3000000 		.4byte	0xe3
+ 666 015e 6D010000 		.4byte	0x16d
+ 667 0162 0C       		.uleb128 0xc
+ 668 0163 97000000 		.4byte	0x97
+ 669 0167 0C       		.uleb128 0xc
+ 670 0168 6D010000 		.4byte	0x16d
+ 671 016c 00       		.byte	0
+ 672 016d 08       		.uleb128 0x8
+ 673 016e 04       		.byte	0x4
+ 674 016f A2000000 		.4byte	0xa2
+ 675 0173 08       		.uleb128 0x8
+ 676 0174 04       		.byte	0x4
+ 677 0175 58010000 		.4byte	0x158
+ 678 0179 03       		.uleb128 0x3
+ 679 017a 30010000 		.4byte	.LASF26
+ 680 017e 06       		.byte	0x6
+ 681 017f C6       		.byte	0xc6
+ 682 0180 E9000000 		.4byte	0xe9
+ 683 0184 0D       		.uleb128 0xd
+ 684 0185 97000000 		.4byte	0x97
+ 685 0189 94010000 		.4byte	0x194
+ 686 018d 0E       		.uleb128 0xe
+ 687 018e 90000000 		.4byte	0x90
+ 688 0192 11       		.byte	0x11
+ 689 0193 00       		.byte	0
+ 690 0194 07       		.uleb128 0x7
+ 691 0195 79010000 		.4byte	.LASF27
+ 692 0199 07       		.byte	0x7
+ARM GAS  /tmp/ccDi7Mwx.s 			page 19
+
+
+ 693 019a 50       		.byte	0x50
+ 694 019b 84010000 		.4byte	0x184
+ 695 019f 01       		.byte	0x1
+ 696 01a0 01       		.byte	0x1
+ 697 01a1 0D       		.uleb128 0xd
+ 698 01a2 97000000 		.4byte	0x97
+ 699 01a6 B1010000 		.4byte	0x1b1
+ 700 01aa 0E       		.uleb128 0xe
+ 701 01ab 90000000 		.4byte	0x90
+ 702 01af 3F       		.byte	0x3f
+ 703 01b0 00       		.byte	0
+ 704 01b1 07       		.uleb128 0x7
+ 705 01b2 4B000000 		.4byte	.LASF28
+ 706 01b6 07       		.byte	0x7
+ 707 01b7 51       		.byte	0x51
+ 708 01b8 A1010000 		.4byte	0x1a1
+ 709 01bc 01       		.byte	0x1
+ 710 01bd 01       		.byte	0x1
+ 711 01be 0D       		.uleb128 0xd
+ 712 01bf 97000000 		.4byte	0x97
+ 713 01c3 CE010000 		.4byte	0x1ce
+ 714 01c7 0E       		.uleb128 0xe
+ 715 01c8 90000000 		.4byte	0x90
+ 716 01cc 08       		.byte	0x8
+ 717 01cd 00       		.byte	0
+ 718 01ce 07       		.uleb128 0x7
+ 719 01cf D7010000 		.4byte	.LASF29
+ 720 01d3 07       		.byte	0x7
+ 721 01d4 52       		.byte	0x52
+ 722 01d5 BE010000 		.4byte	0x1be
+ 723 01d9 01       		.byte	0x1
+ 724 01da 01       		.byte	0x1
+ 725 01db 0D       		.uleb128 0xd
+ 726 01dc 97000000 		.4byte	0x97
+ 727 01e0 EB010000 		.4byte	0x1eb
+ 728 01e4 0E       		.uleb128 0xe
+ 729 01e5 90000000 		.4byte	0x90
+ 730 01e9 09       		.byte	0x9
+ 731 01ea 00       		.byte	0
+ 732 01eb 07       		.uleb128 0x7
+ 733 01ec 5A030000 		.4byte	.LASF30
+ 734 01f0 07       		.byte	0x7
+ 735 01f1 53       		.byte	0x53
+ 736 01f2 DB010000 		.4byte	0x1db
+ 737 01f6 01       		.byte	0x1
+ 738 01f7 01       		.byte	0x1
+ 739 01f8 0D       		.uleb128 0xd
+ 740 01f9 97000000 		.4byte	0x97
+ 741 01fd 08020000 		.4byte	0x208
+ 742 0201 0E       		.uleb128 0xe
+ 743 0202 90000000 		.4byte	0x90
+ 744 0206 03       		.byte	0x3
+ 745 0207 00       		.byte	0
+ 746 0208 07       		.uleb128 0x7
+ 747 0209 4A030000 		.4byte	.LASF31
+ 748 020d 07       		.byte	0x7
+ 749 020e 54       		.byte	0x54
+ARM GAS  /tmp/ccDi7Mwx.s 			page 20
+
+
+ 750 020f F8010000 		.4byte	0x1f8
+ 751 0213 01       		.byte	0x1
+ 752 0214 01       		.byte	0x1
+ 753 0215 07       		.uleb128 0x7
+ 754 0216 CE020000 		.4byte	.LASF32
+ 755 021a 07       		.byte	0x7
+ 756 021b 55       		.byte	0x55
+ 757 021c 79010000 		.4byte	0x179
+ 758 0220 01       		.byte	0x1
+ 759 0221 01       		.byte	0x1
+ 760 0222 0F       		.uleb128 0xf
+ 761 0223 15020000 		.4byte	0x215
+ 762 0227 01       		.byte	0x1
+ 763 0228 5B       		.byte	0x5b
+ 764 0229 05       		.byte	0x5
+ 765 022a 03       		.byte	0x3
+ 766 022b 00000000 		.4byte	USR_desc
+ 767 022f 0F       		.uleb128 0xf
+ 768 0230 94010000 		.4byte	0x194
+ 769 0234 01       		.byte	0x1
+ 770 0235 6D       		.byte	0x6d
+ 771 0236 05       		.byte	0x5
+ 772 0237 03       		.byte	0x3
+ 773 0238 00000000 		.4byte	USBD_DeviceDesc
+ 774 023c 0F       		.uleb128 0xf
+ 775 023d EB010000 		.4byte	0x1eb
+ 776 0241 01       		.byte	0x1
+ 777 0242 89       		.byte	0x89
+ 778 0243 05       		.byte	0x5
+ 779 0244 03       		.byte	0x3
+ 780 0245 00000000 		.4byte	USBD_DeviceQualifierDesc
+ 781 0249 0F       		.uleb128 0xf
+ 782 024a 08020000 		.4byte	0x208
+ 783 024e 01       		.byte	0x1
+ 784 024f 9D       		.byte	0x9d
+ 785 0250 05       		.byte	0x5
+ 786 0251 03       		.byte	0x3
+ 787 0252 00000000 		.4byte	USBD_LangIDDesc
+ 788 0256 10       		.uleb128 0x10
+ 789 0257 01       		.byte	0x1
+ 790 0258 10010000 		.4byte	.LASF35
+ 791 025c 01       		.byte	0x1
+ 792 025d 2301     		.2byte	0x123
+ 793 025f 01       		.byte	0x1
+ 794 0260 E3000000 		.4byte	0xe3
+ 795 0264 01       		.byte	0x1
+ 796 0265 82020000 		.4byte	0x282
+ 797 0269 11       		.uleb128 0x11
+ 798 026a 0A000000 		.4byte	.LASF33
+ 799 026e 01       		.byte	0x1
+ 800 026f 2301     		.2byte	0x123
+ 801 0271 97000000 		.4byte	0x97
+ 802 0275 11       		.uleb128 0x11
+ 803 0276 B0030000 		.4byte	.LASF34
+ 804 027a 01       		.byte	0x1
+ 805 027b 2301     		.2byte	0x123
+ 806 027d 6D010000 		.4byte	0x16d
+ARM GAS  /tmp/ccDi7Mwx.s 			page 21
+
+
+ 807 0281 00       		.byte	0
+ 808 0282 10       		.uleb128 0x10
+ 809 0283 01       		.byte	0x1
+ 810 0284 5C020000 		.4byte	.LASF36
+ 811 0288 01       		.byte	0x1
+ 812 0289 0E01     		.2byte	0x10e
+ 813 028b 01       		.byte	0x1
+ 814 028c E3000000 		.4byte	0xe3
+ 815 0290 01       		.byte	0x1
+ 816 0291 AE020000 		.4byte	0x2ae
+ 817 0295 11       		.uleb128 0x11
+ 818 0296 0A000000 		.4byte	.LASF33
+ 819 029a 01       		.byte	0x1
+ 820 029b 0E01     		.2byte	0x10e
+ 821 029d 97000000 		.4byte	0x97
+ 822 02a1 11       		.uleb128 0x11
+ 823 02a2 B0030000 		.4byte	.LASF34
+ 824 02a6 01       		.byte	0x1
+ 825 02a7 0E01     		.2byte	0x10e
+ 826 02a9 6D010000 		.4byte	0x16d
+ 827 02ad 00       		.byte	0
+ 828 02ae 12       		.uleb128 0x12
+ 829 02af 01       		.byte	0x1
+ 830 02b0 BA010000 		.4byte	.LASF37
+ 831 02b4 01       		.byte	0x1
+ 832 02b5 FA       		.byte	0xfa
+ 833 02b6 01       		.byte	0x1
+ 834 02b7 E3000000 		.4byte	0xe3
+ 835 02bb 01       		.byte	0x1
+ 836 02bc D7020000 		.4byte	0x2d7
+ 837 02c0 13       		.uleb128 0x13
+ 838 02c1 0A000000 		.4byte	.LASF33
+ 839 02c5 01       		.byte	0x1
+ 840 02c6 FA       		.byte	0xfa
+ 841 02c7 97000000 		.4byte	0x97
+ 842 02cb 13       		.uleb128 0x13
+ 843 02cc B0030000 		.4byte	.LASF34
+ 844 02d0 01       		.byte	0x1
+ 845 02d1 FA       		.byte	0xfa
+ 846 02d2 6D010000 		.4byte	0x16d
+ 847 02d6 00       		.byte	0
+ 848 02d7 14       		.uleb128 0x14
+ 849 02d8 01       		.byte	0x1
+ 850 02d9 DF000000 		.4byte	.LASF39
+ 851 02dd 01       		.byte	0x1
+ 852 02de ED       		.byte	0xed
+ 853 02df 01       		.byte	0x1
+ 854 02e0 E3000000 		.4byte	0xe3
+ 855 02e4 18000000 		.4byte	.LFB113
+ 856 02e8 34000000 		.4byte	.LFE113
+ 857 02ec 00000000 		.4byte	.LLST2
+ 858 02f0 01       		.byte	0x1
+ 859 02f1 34030000 		.4byte	0x334
+ 860 02f5 15       		.uleb128 0x15
+ 861 02f6 0A000000 		.4byte	.LASF33
+ 862 02fa 01       		.byte	0x1
+ 863 02fb ED       		.byte	0xed
+ARM GAS  /tmp/ccDi7Mwx.s 			page 22
+
+
+ 864 02fc 97000000 		.4byte	0x97
+ 865 0300 20000000 		.4byte	.LLST3
+ 866 0304 15       		.uleb128 0x15
+ 867 0305 B0030000 		.4byte	.LASF34
+ 868 0309 01       		.byte	0x1
+ 869 030a ED       		.byte	0xed
+ 870 030b 6D010000 		.4byte	0x16d
+ 871 030f 41000000 		.4byte	.LLST4
+ 872 0313 16       		.uleb128 0x16
+ 873 0314 26000000 		.4byte	.LVL7
+ 874 0318 41050000 		.4byte	0x541
+ 875 031c 17       		.uleb128 0x17
+ 876 031d 01       		.byte	0x1
+ 877 031e 50       		.byte	0x50
+ 878 031f 05       		.byte	0x5
+ 879 0320 03       		.byte	0x3
+ 880 0321 00000000 		.4byte	.LC0
+ 881 0325 17       		.uleb128 0x17
+ 882 0326 01       		.byte	0x1
+ 883 0327 51       		.byte	0x51
+ 884 0328 02       		.byte	0x2
+ 885 0329 74       		.byte	0x74
+ 886 032a 00       		.sleb128 0
+ 887 032b 17       		.uleb128 0x17
+ 888 032c 01       		.byte	0x1
+ 889 032d 52       		.byte	0x52
+ 890 032e 03       		.byte	0x3
+ 891 032f F3       		.byte	0xf3
+ 892 0330 01       		.uleb128 0x1
+ 893 0331 51       		.byte	0x51
+ 894 0332 00       		.byte	0
+ 895 0333 00       		.byte	0
+ 896 0334 12       		.uleb128 0x12
+ 897 0335 01       		.byte	0x1
+ 898 0336 B7030000 		.4byte	.LASF38
+ 899 033a 01       		.byte	0x1
+ 900 033b D7       		.byte	0xd7
+ 901 033c 01       		.byte	0x1
+ 902 033d E3000000 		.4byte	0xe3
+ 903 0341 01       		.byte	0x1
+ 904 0342 5D030000 		.4byte	0x35d
+ 905 0346 13       		.uleb128 0x13
+ 906 0347 0A000000 		.4byte	.LASF33
+ 907 034b 01       		.byte	0x1
+ 908 034c D7       		.byte	0xd7
+ 909 034d 97000000 		.4byte	0x97
+ 910 0351 13       		.uleb128 0x13
+ 911 0352 B0030000 		.4byte	.LASF34
+ 912 0356 01       		.byte	0x1
+ 913 0357 D7       		.byte	0xd7
+ 914 0358 6D010000 		.4byte	0x16d
+ 915 035c 00       		.byte	0
+ 916 035d 18       		.uleb128 0x18
+ 917 035e 01       		.byte	0x1
+ 918 035f 79020000 		.4byte	.LASF40
+ 919 0363 01       		.byte	0x1
+ 920 0364 C9       		.byte	0xc9
+ARM GAS  /tmp/ccDi7Mwx.s 			page 23
+
+
+ 921 0365 01       		.byte	0x1
+ 922 0366 E3000000 		.4byte	0xe3
+ 923 036a 0C000000 		.4byte	.LFB111
+ 924 036e 18000000 		.4byte	.LFE111
+ 925 0372 02       		.byte	0x2
+ 926 0373 7D       		.byte	0x7d
+ 927 0374 00       		.sleb128 0
+ 928 0375 01       		.byte	0x1
+ 929 0376 97030000 		.4byte	0x397
+ 930 037a 15       		.uleb128 0x15
+ 931 037b 0A000000 		.4byte	.LASF33
+ 932 037f 01       		.byte	0x1
+ 933 0380 C9       		.byte	0xc9
+ 934 0381 97000000 		.4byte	0x97
+ 935 0385 6D000000 		.4byte	.LLST1
+ 936 0389 19       		.uleb128 0x19
+ 937 038a B0030000 		.4byte	.LASF34
+ 938 038e 01       		.byte	0x1
+ 939 038f C9       		.byte	0xc9
+ 940 0390 6D010000 		.4byte	0x16d
+ 941 0394 01       		.byte	0x1
+ 942 0395 51       		.byte	0x51
+ 943 0396 00       		.byte	0
+ 944 0397 18       		.uleb128 0x18
+ 945 0398 01       		.byte	0x1
+ 946 0399 B4020000 		.4byte	.LASF41
+ 947 039d 01       		.byte	0x1
+ 948 039e BC       		.byte	0xbc
+ 949 039f 01       		.byte	0x1
+ 950 03a0 E3000000 		.4byte	0xe3
+ 951 03a4 00000000 		.4byte	.LFB110
+ 952 03a8 0C000000 		.4byte	.LFE110
+ 953 03ac 02       		.byte	0x2
+ 954 03ad 7D       		.byte	0x7d
+ 955 03ae 00       		.sleb128 0
+ 956 03af 01       		.byte	0x1
+ 957 03b0 D1030000 		.4byte	0x3d1
+ 958 03b4 15       		.uleb128 0x15
+ 959 03b5 0A000000 		.4byte	.LASF33
+ 960 03b9 01       		.byte	0x1
+ 961 03ba BC       		.byte	0xbc
+ 962 03bb 97000000 		.4byte	0x97
+ 963 03bf 8E000000 		.4byte	.LLST0
+ 964 03c3 19       		.uleb128 0x19
+ 965 03c4 B0030000 		.4byte	.LASF34
+ 966 03c8 01       		.byte	0x1
+ 967 03c9 BC       		.byte	0xbc
+ 968 03ca 6D010000 		.4byte	0x16d
+ 969 03ce 01       		.byte	0x1
+ 970 03cf 51       		.byte	0x51
+ 971 03d0 00       		.byte	0
+ 972 03d1 1A       		.uleb128 0x1a
+ 973 03d2 34030000 		.4byte	0x334
+ 974 03d6 34000000 		.4byte	.LFB112
+ 975 03da 58000000 		.4byte	.LFE112
+ 976 03de AF000000 		.4byte	.LLST5
+ 977 03e2 01       		.byte	0x1
+ARM GAS  /tmp/ccDi7Mwx.s 			page 24
+
+
+ 978 03e3 23040000 		.4byte	0x423
+ 979 03e7 1B       		.uleb128 0x1b
+ 980 03e8 46030000 		.4byte	0x346
+ 981 03ec CF000000 		.4byte	.LLST6
+ 982 03f0 1B       		.uleb128 0x1b
+ 983 03f1 51030000 		.4byte	0x351
+ 984 03f5 09010000 		.4byte	.LLST7
+ 985 03f9 1C       		.uleb128 0x1c
+ 986 03fa 34030000 		.4byte	0x334
+ 987 03fe 00000000 		.4byte	.Ldebug_ranges0+0
+ 988 0402 19040000 		.4byte	0x419
+ 989 0406 1B       		.uleb128 0x1b
+ 990 0407 46030000 		.4byte	0x346
+ 991 040b 40010000 		.4byte	.LLST8
+ 992 040f 1B       		.uleb128 0x1b
+ 993 0410 51030000 		.4byte	0x351
+ 994 0414 54010000 		.4byte	.LLST9
+ 995 0418 00       		.byte	0
+ 996 0419 1D       		.uleb128 0x1d
+ 997 041a 42000000 		.4byte	.LVL12
+ 998 041e 41050000 		.4byte	0x541
+ 999 0422 00       		.byte	0
+ 1000 0423 1A       		.uleb128 0x1a
+ 1001 0424 AE020000 		.4byte	0x2ae
+ 1002 0428 58000000 		.4byte	.LFB114
+ 1003 042c 7C000000 		.4byte	.LFE114
+ 1004 0430 67010000 		.4byte	.LLST10
+ 1005 0434 01       		.byte	0x1
+ 1006 0435 75040000 		.4byte	0x475
+ 1007 0439 1B       		.uleb128 0x1b
+ 1008 043a C0020000 		.4byte	0x2c0
+ 1009 043e 87010000 		.4byte	.LLST11
+ 1010 0442 1B       		.uleb128 0x1b
+ 1011 0443 CB020000 		.4byte	0x2cb
+ 1012 0447 C1010000 		.4byte	.LLST12
+ 1013 044b 1C       		.uleb128 0x1c
+ 1014 044c AE020000 		.4byte	0x2ae
+ 1015 0450 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 1016 0454 6B040000 		.4byte	0x46b
+ 1017 0458 1B       		.uleb128 0x1b
+ 1018 0459 C0020000 		.4byte	0x2c0
+ 1019 045d F8010000 		.4byte	.LLST13
+ 1020 0461 1B       		.uleb128 0x1b
+ 1021 0462 CB020000 		.4byte	0x2cb
+ 1022 0466 0C020000 		.4byte	.LLST14
+ 1023 046a 00       		.byte	0
+ 1024 046b 1D       		.uleb128 0x1d
+ 1025 046c 66000000 		.4byte	.LVL19
+ 1026 0470 41050000 		.4byte	0x541
+ 1027 0474 00       		.byte	0
+ 1028 0475 1A       		.uleb128 0x1a
+ 1029 0476 82020000 		.4byte	0x282
+ 1030 047a 7C000000 		.4byte	.LFB115
+ 1031 047e 98000000 		.4byte	.LFE115
+ 1032 0482 1F020000 		.4byte	.LLST15
+ 1033 0486 01       		.byte	0x1
+ 1034 0487 DB040000 		.4byte	0x4db
+ARM GAS  /tmp/ccDi7Mwx.s 			page 25
+
+
+ 1035 048b 1B       		.uleb128 0x1b
+ 1036 048c 95020000 		.4byte	0x295
+ 1037 0490 3F020000 		.4byte	.LLST16
+ 1038 0494 1B       		.uleb128 0x1b
+ 1039 0495 A1020000 		.4byte	0x2a1
+ 1040 0499 60020000 		.4byte	.LLST17
+ 1041 049d 1E       		.uleb128 0x1e
+ 1042 049e 82020000 		.4byte	0x282
+ 1043 04a2 7E000000 		.4byte	.LBB16
+ 1044 04a6 8A000000 		.4byte	.LBE16
+ 1045 04aa 1F       		.uleb128 0x1f
+ 1046 04ab 95020000 		.4byte	0x295
+ 1047 04af 00       		.byte	0
+ 1048 04b0 1B       		.uleb128 0x1b
+ 1049 04b1 A1020000 		.4byte	0x2a1
+ 1050 04b5 8C020000 		.4byte	.LLST18
+ 1051 04b9 16       		.uleb128 0x16
+ 1052 04ba 8A000000 		.4byte	.LVL25
+ 1053 04be 41050000 		.4byte	0x541
+ 1054 04c2 17       		.uleb128 0x17
+ 1055 04c3 01       		.byte	0x1
+ 1056 04c4 50       		.byte	0x50
+ 1057 04c5 05       		.byte	0x5
+ 1058 04c6 03       		.byte	0x3
+ 1059 04c7 66000000 		.4byte	.LC5
+ 1060 04cb 17       		.uleb128 0x17
+ 1061 04cc 01       		.byte	0x1
+ 1062 04cd 51       		.byte	0x51
+ 1063 04ce 02       		.byte	0x2
+ 1064 04cf 74       		.byte	0x74
+ 1065 04d0 00       		.sleb128 0
+ 1066 04d1 17       		.uleb128 0x17
+ 1067 04d2 01       		.byte	0x1
+ 1068 04d3 52       		.byte	0x52
+ 1069 04d4 03       		.byte	0x3
+ 1070 04d5 F3       		.byte	0xf3
+ 1071 04d6 01       		.uleb128 0x1
+ 1072 04d7 51       		.byte	0x51
+ 1073 04d8 00       		.byte	0
+ 1074 04d9 00       		.byte	0
+ 1075 04da 00       		.byte	0
+ 1076 04db 1A       		.uleb128 0x1a
+ 1077 04dc 56020000 		.4byte	0x256
+ 1078 04e0 98000000 		.4byte	.LFB116
+ 1079 04e4 B4000000 		.4byte	.LFE116
+ 1080 04e8 B8020000 		.4byte	.LLST19
+ 1081 04ec 01       		.byte	0x1
+ 1082 04ed 41050000 		.4byte	0x541
+ 1083 04f1 1B       		.uleb128 0x1b
+ 1084 04f2 69020000 		.4byte	0x269
+ 1085 04f6 D8020000 		.4byte	.LLST20
+ 1086 04fa 1B       		.uleb128 0x1b
+ 1087 04fb 75020000 		.4byte	0x275
+ 1088 04ff F9020000 		.4byte	.LLST21
+ 1089 0503 1E       		.uleb128 0x1e
+ 1090 0504 56020000 		.4byte	0x256
+ 1091 0508 9A000000 		.4byte	.LBB20
+ARM GAS  /tmp/ccDi7Mwx.s 			page 26
+
+
+ 1092 050c A6000000 		.4byte	.LBE20
+ 1093 0510 1F       		.uleb128 0x1f
+ 1094 0511 69020000 		.4byte	0x269
+ 1095 0515 00       		.byte	0
+ 1096 0516 1B       		.uleb128 0x1b
+ 1097 0517 75020000 		.4byte	0x275
+ 1098 051b 25030000 		.4byte	.LLST22
+ 1099 051f 16       		.uleb128 0x16
+ 1100 0520 A6000000 		.4byte	.LVL29
+ 1101 0524 41050000 		.4byte	0x541
+ 1102 0528 17       		.uleb128 0x17
+ 1103 0529 01       		.byte	0x1
+ 1104 052a 50       		.byte	0x50
+ 1105 052b 05       		.byte	0x5
+ 1106 052c 03       		.byte	0x3
+ 1107 052d 71000000 		.4byte	.LC6
+ 1108 0531 17       		.uleb128 0x17
+ 1109 0532 01       		.byte	0x1
+ 1110 0533 51       		.byte	0x51
+ 1111 0534 02       		.byte	0x2
+ 1112 0535 74       		.byte	0x74
+ 1113 0536 00       		.sleb128 0
+ 1114 0537 17       		.uleb128 0x17
+ 1115 0538 01       		.byte	0x1
+ 1116 0539 52       		.byte	0x52
+ 1117 053a 03       		.byte	0x3
+ 1118 053b F3       		.byte	0xf3
+ 1119 053c 01       		.uleb128 0x1
+ 1120 053d 51       		.byte	0x51
+ 1121 053e 00       		.byte	0
+ 1122 053f 00       		.byte	0
+ 1123 0540 00       		.byte	0
+ 1124 0541 20       		.uleb128 0x20
+ 1125 0542 01       		.byte	0x1
+ 1126 0543 01       		.byte	0x1
+ 1127 0544 F9010000 		.4byte	.LASF46
+ 1128 0548 F9010000 		.4byte	.LASF46
+ 1129 054c 08       		.byte	0x8
+ 1130 054d 5C       		.byte	0x5c
+ 1131 054e 00       		.byte	0
+ 1132              		.section	.debug_abbrev,"",%progbits
+ 1133              	.Ldebug_abbrev0:
+ 1134 0000 01       		.uleb128 0x1
+ 1135 0001 11       		.uleb128 0x11
+ 1136 0002 01       		.byte	0x1
+ 1137 0003 25       		.uleb128 0x25
+ 1138 0004 0E       		.uleb128 0xe
+ 1139 0005 13       		.uleb128 0x13
+ 1140 0006 0B       		.uleb128 0xb
+ 1141 0007 03       		.uleb128 0x3
+ 1142 0008 0E       		.uleb128 0xe
+ 1143 0009 1B       		.uleb128 0x1b
+ 1144 000a 0E       		.uleb128 0xe
+ 1145 000b 11       		.uleb128 0x11
+ 1146 000c 01       		.uleb128 0x1
+ 1147 000d 12       		.uleb128 0x12
+ 1148 000e 01       		.uleb128 0x1
+ARM GAS  /tmp/ccDi7Mwx.s 			page 27
+
+
+ 1149 000f 10       		.uleb128 0x10
+ 1150 0010 06       		.uleb128 0x6
+ 1151 0011 00       		.byte	0
+ 1152 0012 00       		.byte	0
+ 1153 0013 02       		.uleb128 0x2
+ 1154 0014 24       		.uleb128 0x24
+ 1155 0015 00       		.byte	0
+ 1156 0016 0B       		.uleb128 0xb
+ 1157 0017 0B       		.uleb128 0xb
+ 1158 0018 3E       		.uleb128 0x3e
+ 1159 0019 0B       		.uleb128 0xb
+ 1160 001a 03       		.uleb128 0x3
+ 1161 001b 0E       		.uleb128 0xe
+ 1162 001c 00       		.byte	0
+ 1163 001d 00       		.byte	0
+ 1164 001e 03       		.uleb128 0x3
+ 1165 001f 16       		.uleb128 0x16
+ 1166 0020 00       		.byte	0
+ 1167 0021 03       		.uleb128 0x3
+ 1168 0022 0E       		.uleb128 0xe
+ 1169 0023 3A       		.uleb128 0x3a
+ 1170 0024 0B       		.uleb128 0xb
+ 1171 0025 3B       		.uleb128 0x3b
+ 1172 0026 0B       		.uleb128 0xb
+ 1173 0027 49       		.uleb128 0x49
+ 1174 0028 13       		.uleb128 0x13
+ 1175 0029 00       		.byte	0
+ 1176 002a 00       		.byte	0
+ 1177 002b 04       		.uleb128 0x4
+ 1178 002c 24       		.uleb128 0x24
+ 1179 002d 00       		.byte	0
+ 1180 002e 0B       		.uleb128 0xb
+ 1181 002f 0B       		.uleb128 0xb
+ 1182 0030 3E       		.uleb128 0x3e
+ 1183 0031 0B       		.uleb128 0xb
+ 1184 0032 03       		.uleb128 0x3
+ 1185 0033 08       		.uleb128 0x8
+ 1186 0034 00       		.byte	0
+ 1187 0035 00       		.byte	0
+ 1188 0036 05       		.uleb128 0x5
+ 1189 0037 35       		.uleb128 0x35
+ 1190 0038 00       		.byte	0
+ 1191 0039 49       		.uleb128 0x49
+ 1192 003a 13       		.uleb128 0x13
+ 1193 003b 00       		.byte	0
+ 1194 003c 00       		.byte	0
+ 1195 003d 06       		.uleb128 0x6
+ 1196 003e 34       		.uleb128 0x34
+ 1197 003f 00       		.byte	0
+ 1198 0040 03       		.uleb128 0x3
+ 1199 0041 0E       		.uleb128 0xe
+ 1200 0042 3A       		.uleb128 0x3a
+ 1201 0043 0B       		.uleb128 0xb
+ 1202 0044 3B       		.uleb128 0x3b
+ 1203 0045 05       		.uleb128 0x5
+ 1204 0046 49       		.uleb128 0x49
+ 1205 0047 13       		.uleb128 0x13
+ARM GAS  /tmp/ccDi7Mwx.s 			page 28
+
+
+ 1206 0048 3F       		.uleb128 0x3f
+ 1207 0049 0C       		.uleb128 0xc
+ 1208 004a 3C       		.uleb128 0x3c
+ 1209 004b 0C       		.uleb128 0xc
+ 1210 004c 00       		.byte	0
+ 1211 004d 00       		.byte	0
+ 1212 004e 07       		.uleb128 0x7
+ 1213 004f 34       		.uleb128 0x34
+ 1214 0050 00       		.byte	0
+ 1215 0051 03       		.uleb128 0x3
+ 1216 0052 0E       		.uleb128 0xe
+ 1217 0053 3A       		.uleb128 0x3a
+ 1218 0054 0B       		.uleb128 0xb
+ 1219 0055 3B       		.uleb128 0x3b
+ 1220 0056 0B       		.uleb128 0xb
+ 1221 0057 49       		.uleb128 0x49
+ 1222 0058 13       		.uleb128 0x13
+ 1223 0059 3F       		.uleb128 0x3f
+ 1224 005a 0C       		.uleb128 0xc
+ 1225 005b 3C       		.uleb128 0x3c
+ 1226 005c 0C       		.uleb128 0xc
+ 1227 005d 00       		.byte	0
+ 1228 005e 00       		.byte	0
+ 1229 005f 08       		.uleb128 0x8
+ 1230 0060 0F       		.uleb128 0xf
+ 1231 0061 00       		.byte	0
+ 1232 0062 0B       		.uleb128 0xb
+ 1233 0063 0B       		.uleb128 0xb
+ 1234 0064 49       		.uleb128 0x49
+ 1235 0065 13       		.uleb128 0x13
+ 1236 0066 00       		.byte	0
+ 1237 0067 00       		.byte	0
+ 1238 0068 09       		.uleb128 0x9
+ 1239 0069 13       		.uleb128 0x13
+ 1240 006a 01       		.byte	0x1
+ 1241 006b 03       		.uleb128 0x3
+ 1242 006c 0E       		.uleb128 0xe
+ 1243 006d 0B       		.uleb128 0xb
+ 1244 006e 0B       		.uleb128 0xb
+ 1245 006f 3A       		.uleb128 0x3a
+ 1246 0070 0B       		.uleb128 0xb
+ 1247 0071 3B       		.uleb128 0x3b
+ 1248 0072 0B       		.uleb128 0xb
+ 1249 0073 01       		.uleb128 0x1
+ 1250 0074 13       		.uleb128 0x13
+ 1251 0075 00       		.byte	0
+ 1252 0076 00       		.byte	0
+ 1253 0077 0A       		.uleb128 0xa
+ 1254 0078 0D       		.uleb128 0xd
+ 1255 0079 00       		.byte	0
+ 1256 007a 03       		.uleb128 0x3
+ 1257 007b 0E       		.uleb128 0xe
+ 1258 007c 3A       		.uleb128 0x3a
+ 1259 007d 0B       		.uleb128 0xb
+ 1260 007e 3B       		.uleb128 0x3b
+ 1261 007f 0B       		.uleb128 0xb
+ 1262 0080 49       		.uleb128 0x49
+ARM GAS  /tmp/ccDi7Mwx.s 			page 29
+
+
+ 1263 0081 13       		.uleb128 0x13
+ 1264 0082 38       		.uleb128 0x38
+ 1265 0083 0A       		.uleb128 0xa
+ 1266 0084 00       		.byte	0
+ 1267 0085 00       		.byte	0
+ 1268 0086 0B       		.uleb128 0xb
+ 1269 0087 15       		.uleb128 0x15
+ 1270 0088 01       		.byte	0x1
+ 1271 0089 27       		.uleb128 0x27
+ 1272 008a 0C       		.uleb128 0xc
+ 1273 008b 49       		.uleb128 0x49
+ 1274 008c 13       		.uleb128 0x13
+ 1275 008d 01       		.uleb128 0x1
+ 1276 008e 13       		.uleb128 0x13
+ 1277 008f 00       		.byte	0
+ 1278 0090 00       		.byte	0
+ 1279 0091 0C       		.uleb128 0xc
+ 1280 0092 05       		.uleb128 0x5
+ 1281 0093 00       		.byte	0
+ 1282 0094 49       		.uleb128 0x49
+ 1283 0095 13       		.uleb128 0x13
+ 1284 0096 00       		.byte	0
+ 1285 0097 00       		.byte	0
+ 1286 0098 0D       		.uleb128 0xd
+ 1287 0099 01       		.uleb128 0x1
+ 1288 009a 01       		.byte	0x1
+ 1289 009b 49       		.uleb128 0x49
+ 1290 009c 13       		.uleb128 0x13
+ 1291 009d 01       		.uleb128 0x1
+ 1292 009e 13       		.uleb128 0x13
+ 1293 009f 00       		.byte	0
+ 1294 00a0 00       		.byte	0
+ 1295 00a1 0E       		.uleb128 0xe
+ 1296 00a2 21       		.uleb128 0x21
+ 1297 00a3 00       		.byte	0
+ 1298 00a4 49       		.uleb128 0x49
+ 1299 00a5 13       		.uleb128 0x13
+ 1300 00a6 2F       		.uleb128 0x2f
+ 1301 00a7 0B       		.uleb128 0xb
+ 1302 00a8 00       		.byte	0
+ 1303 00a9 00       		.byte	0
+ 1304 00aa 0F       		.uleb128 0xf
+ 1305 00ab 34       		.uleb128 0x34
+ 1306 00ac 00       		.byte	0
+ 1307 00ad 47       		.uleb128 0x47
+ 1308 00ae 13       		.uleb128 0x13
+ 1309 00af 3A       		.uleb128 0x3a
+ 1310 00b0 0B       		.uleb128 0xb
+ 1311 00b1 3B       		.uleb128 0x3b
+ 1312 00b2 0B       		.uleb128 0xb
+ 1313 00b3 02       		.uleb128 0x2
+ 1314 00b4 0A       		.uleb128 0xa
+ 1315 00b5 00       		.byte	0
+ 1316 00b6 00       		.byte	0
+ 1317 00b7 10       		.uleb128 0x10
+ 1318 00b8 2E       		.uleb128 0x2e
+ 1319 00b9 01       		.byte	0x1
+ARM GAS  /tmp/ccDi7Mwx.s 			page 30
+
+
+ 1320 00ba 3F       		.uleb128 0x3f
+ 1321 00bb 0C       		.uleb128 0xc
+ 1322 00bc 03       		.uleb128 0x3
+ 1323 00bd 0E       		.uleb128 0xe
+ 1324 00be 3A       		.uleb128 0x3a
+ 1325 00bf 0B       		.uleb128 0xb
+ 1326 00c0 3B       		.uleb128 0x3b
+ 1327 00c1 05       		.uleb128 0x5
+ 1328 00c2 27       		.uleb128 0x27
+ 1329 00c3 0C       		.uleb128 0xc
+ 1330 00c4 49       		.uleb128 0x49
+ 1331 00c5 13       		.uleb128 0x13
+ 1332 00c6 20       		.uleb128 0x20
+ 1333 00c7 0B       		.uleb128 0xb
+ 1334 00c8 01       		.uleb128 0x1
+ 1335 00c9 13       		.uleb128 0x13
+ 1336 00ca 00       		.byte	0
+ 1337 00cb 00       		.byte	0
+ 1338 00cc 11       		.uleb128 0x11
+ 1339 00cd 05       		.uleb128 0x5
+ 1340 00ce 00       		.byte	0
+ 1341 00cf 03       		.uleb128 0x3
+ 1342 00d0 0E       		.uleb128 0xe
+ 1343 00d1 3A       		.uleb128 0x3a
+ 1344 00d2 0B       		.uleb128 0xb
+ 1345 00d3 3B       		.uleb128 0x3b
+ 1346 00d4 05       		.uleb128 0x5
+ 1347 00d5 49       		.uleb128 0x49
+ 1348 00d6 13       		.uleb128 0x13
+ 1349 00d7 00       		.byte	0
+ 1350 00d8 00       		.byte	0
+ 1351 00d9 12       		.uleb128 0x12
+ 1352 00da 2E       		.uleb128 0x2e
+ 1353 00db 01       		.byte	0x1
+ 1354 00dc 3F       		.uleb128 0x3f
+ 1355 00dd 0C       		.uleb128 0xc
+ 1356 00de 03       		.uleb128 0x3
+ 1357 00df 0E       		.uleb128 0xe
+ 1358 00e0 3A       		.uleb128 0x3a
+ 1359 00e1 0B       		.uleb128 0xb
+ 1360 00e2 3B       		.uleb128 0x3b
+ 1361 00e3 0B       		.uleb128 0xb
+ 1362 00e4 27       		.uleb128 0x27
+ 1363 00e5 0C       		.uleb128 0xc
+ 1364 00e6 49       		.uleb128 0x49
+ 1365 00e7 13       		.uleb128 0x13
+ 1366 00e8 20       		.uleb128 0x20
+ 1367 00e9 0B       		.uleb128 0xb
+ 1368 00ea 01       		.uleb128 0x1
+ 1369 00eb 13       		.uleb128 0x13
+ 1370 00ec 00       		.byte	0
+ 1371 00ed 00       		.byte	0
+ 1372 00ee 13       		.uleb128 0x13
+ 1373 00ef 05       		.uleb128 0x5
+ 1374 00f0 00       		.byte	0
+ 1375 00f1 03       		.uleb128 0x3
+ 1376 00f2 0E       		.uleb128 0xe
+ARM GAS  /tmp/ccDi7Mwx.s 			page 31
+
+
+ 1377 00f3 3A       		.uleb128 0x3a
+ 1378 00f4 0B       		.uleb128 0xb
+ 1379 00f5 3B       		.uleb128 0x3b
+ 1380 00f6 0B       		.uleb128 0xb
+ 1381 00f7 49       		.uleb128 0x49
+ 1382 00f8 13       		.uleb128 0x13
+ 1383 00f9 00       		.byte	0
+ 1384 00fa 00       		.byte	0
+ 1385 00fb 14       		.uleb128 0x14
+ 1386 00fc 2E       		.uleb128 0x2e
+ 1387 00fd 01       		.byte	0x1
+ 1388 00fe 3F       		.uleb128 0x3f
+ 1389 00ff 0C       		.uleb128 0xc
+ 1390 0100 03       		.uleb128 0x3
+ 1391 0101 0E       		.uleb128 0xe
+ 1392 0102 3A       		.uleb128 0x3a
+ 1393 0103 0B       		.uleb128 0xb
+ 1394 0104 3B       		.uleb128 0x3b
+ 1395 0105 0B       		.uleb128 0xb
+ 1396 0106 27       		.uleb128 0x27
+ 1397 0107 0C       		.uleb128 0xc
+ 1398 0108 49       		.uleb128 0x49
+ 1399 0109 13       		.uleb128 0x13
+ 1400 010a 11       		.uleb128 0x11
+ 1401 010b 01       		.uleb128 0x1
+ 1402 010c 12       		.uleb128 0x12
+ 1403 010d 01       		.uleb128 0x1
+ 1404 010e 40       		.uleb128 0x40
+ 1405 010f 06       		.uleb128 0x6
+ 1406 0110 9742     		.uleb128 0x2117
+ 1407 0112 0C       		.uleb128 0xc
+ 1408 0113 01       		.uleb128 0x1
+ 1409 0114 13       		.uleb128 0x13
+ 1410 0115 00       		.byte	0
+ 1411 0116 00       		.byte	0
+ 1412 0117 15       		.uleb128 0x15
+ 1413 0118 05       		.uleb128 0x5
+ 1414 0119 00       		.byte	0
+ 1415 011a 03       		.uleb128 0x3
+ 1416 011b 0E       		.uleb128 0xe
+ 1417 011c 3A       		.uleb128 0x3a
+ 1418 011d 0B       		.uleb128 0xb
+ 1419 011e 3B       		.uleb128 0x3b
+ 1420 011f 0B       		.uleb128 0xb
+ 1421 0120 49       		.uleb128 0x49
+ 1422 0121 13       		.uleb128 0x13
+ 1423 0122 02       		.uleb128 0x2
+ 1424 0123 06       		.uleb128 0x6
+ 1425 0124 00       		.byte	0
+ 1426 0125 00       		.byte	0
+ 1427 0126 16       		.uleb128 0x16
+ 1428 0127 898201   		.uleb128 0x4109
+ 1429 012a 01       		.byte	0x1
+ 1430 012b 11       		.uleb128 0x11
+ 1431 012c 01       		.uleb128 0x1
+ 1432 012d 31       		.uleb128 0x31
+ 1433 012e 13       		.uleb128 0x13
+ARM GAS  /tmp/ccDi7Mwx.s 			page 32
+
+
+ 1434 012f 00       		.byte	0
+ 1435 0130 00       		.byte	0
+ 1436 0131 17       		.uleb128 0x17
+ 1437 0132 8A8201   		.uleb128 0x410a
+ 1438 0135 00       		.byte	0
+ 1439 0136 02       		.uleb128 0x2
+ 1440 0137 0A       		.uleb128 0xa
+ 1441 0138 9142     		.uleb128 0x2111
+ 1442 013a 0A       		.uleb128 0xa
+ 1443 013b 00       		.byte	0
+ 1444 013c 00       		.byte	0
+ 1445 013d 18       		.uleb128 0x18
+ 1446 013e 2E       		.uleb128 0x2e
+ 1447 013f 01       		.byte	0x1
+ 1448 0140 3F       		.uleb128 0x3f
+ 1449 0141 0C       		.uleb128 0xc
+ 1450 0142 03       		.uleb128 0x3
+ 1451 0143 0E       		.uleb128 0xe
+ 1452 0144 3A       		.uleb128 0x3a
+ 1453 0145 0B       		.uleb128 0xb
+ 1454 0146 3B       		.uleb128 0x3b
+ 1455 0147 0B       		.uleb128 0xb
+ 1456 0148 27       		.uleb128 0x27
+ 1457 0149 0C       		.uleb128 0xc
+ 1458 014a 49       		.uleb128 0x49
+ 1459 014b 13       		.uleb128 0x13
+ 1460 014c 11       		.uleb128 0x11
+ 1461 014d 01       		.uleb128 0x1
+ 1462 014e 12       		.uleb128 0x12
+ 1463 014f 01       		.uleb128 0x1
+ 1464 0150 40       		.uleb128 0x40
+ 1465 0151 0A       		.uleb128 0xa
+ 1466 0152 9742     		.uleb128 0x2117
+ 1467 0154 0C       		.uleb128 0xc
+ 1468 0155 01       		.uleb128 0x1
+ 1469 0156 13       		.uleb128 0x13
+ 1470 0157 00       		.byte	0
+ 1471 0158 00       		.byte	0
+ 1472 0159 19       		.uleb128 0x19
+ 1473 015a 05       		.uleb128 0x5
+ 1474 015b 00       		.byte	0
+ 1475 015c 03       		.uleb128 0x3
+ 1476 015d 0E       		.uleb128 0xe
+ 1477 015e 3A       		.uleb128 0x3a
+ 1478 015f 0B       		.uleb128 0xb
+ 1479 0160 3B       		.uleb128 0x3b
+ 1480 0161 0B       		.uleb128 0xb
+ 1481 0162 49       		.uleb128 0x49
+ 1482 0163 13       		.uleb128 0x13
+ 1483 0164 02       		.uleb128 0x2
+ 1484 0165 0A       		.uleb128 0xa
+ 1485 0166 00       		.byte	0
+ 1486 0167 00       		.byte	0
+ 1487 0168 1A       		.uleb128 0x1a
+ 1488 0169 2E       		.uleb128 0x2e
+ 1489 016a 01       		.byte	0x1
+ 1490 016b 31       		.uleb128 0x31
+ARM GAS  /tmp/ccDi7Mwx.s 			page 33
+
+
+ 1491 016c 13       		.uleb128 0x13
+ 1492 016d 11       		.uleb128 0x11
+ 1493 016e 01       		.uleb128 0x1
+ 1494 016f 12       		.uleb128 0x12
+ 1495 0170 01       		.uleb128 0x1
+ 1496 0171 40       		.uleb128 0x40
+ 1497 0172 06       		.uleb128 0x6
+ 1498 0173 9742     		.uleb128 0x2117
+ 1499 0175 0C       		.uleb128 0xc
+ 1500 0176 01       		.uleb128 0x1
+ 1501 0177 13       		.uleb128 0x13
+ 1502 0178 00       		.byte	0
+ 1503 0179 00       		.byte	0
+ 1504 017a 1B       		.uleb128 0x1b
+ 1505 017b 05       		.uleb128 0x5
+ 1506 017c 00       		.byte	0
+ 1507 017d 31       		.uleb128 0x31
+ 1508 017e 13       		.uleb128 0x13
+ 1509 017f 02       		.uleb128 0x2
+ 1510 0180 06       		.uleb128 0x6
+ 1511 0181 00       		.byte	0
+ 1512 0182 00       		.byte	0
+ 1513 0183 1C       		.uleb128 0x1c
+ 1514 0184 0B       		.uleb128 0xb
+ 1515 0185 01       		.byte	0x1
+ 1516 0186 31       		.uleb128 0x31
+ 1517 0187 13       		.uleb128 0x13
+ 1518 0188 55       		.uleb128 0x55
+ 1519 0189 06       		.uleb128 0x6
+ 1520 018a 01       		.uleb128 0x1
+ 1521 018b 13       		.uleb128 0x13
+ 1522 018c 00       		.byte	0
+ 1523 018d 00       		.byte	0
+ 1524 018e 1D       		.uleb128 0x1d
+ 1525 018f 898201   		.uleb128 0x4109
+ 1526 0192 00       		.byte	0
+ 1527 0193 11       		.uleb128 0x11
+ 1528 0194 01       		.uleb128 0x1
+ 1529 0195 31       		.uleb128 0x31
+ 1530 0196 13       		.uleb128 0x13
+ 1531 0197 00       		.byte	0
+ 1532 0198 00       		.byte	0
+ 1533 0199 1E       		.uleb128 0x1e
+ 1534 019a 0B       		.uleb128 0xb
+ 1535 019b 01       		.byte	0x1
+ 1536 019c 31       		.uleb128 0x31
+ 1537 019d 13       		.uleb128 0x13
+ 1538 019e 11       		.uleb128 0x11
+ 1539 019f 01       		.uleb128 0x1
+ 1540 01a0 12       		.uleb128 0x12
+ 1541 01a1 01       		.uleb128 0x1
+ 1542 01a2 00       		.byte	0
+ 1543 01a3 00       		.byte	0
+ 1544 01a4 1F       		.uleb128 0x1f
+ 1545 01a5 05       		.uleb128 0x5
+ 1546 01a6 00       		.byte	0
+ 1547 01a7 31       		.uleb128 0x31
+ARM GAS  /tmp/ccDi7Mwx.s 			page 34
+
+
+ 1548 01a8 13       		.uleb128 0x13
+ 1549 01a9 1C       		.uleb128 0x1c
+ 1550 01aa 0B       		.uleb128 0xb
+ 1551 01ab 00       		.byte	0
+ 1552 01ac 00       		.byte	0
+ 1553 01ad 20       		.uleb128 0x20
+ 1554 01ae 2E       		.uleb128 0x2e
+ 1555 01af 00       		.byte	0
+ 1556 01b0 3F       		.uleb128 0x3f
+ 1557 01b1 0C       		.uleb128 0xc
+ 1558 01b2 3C       		.uleb128 0x3c
+ 1559 01b3 0C       		.uleb128 0xc
+ 1560 01b4 8740     		.uleb128 0x2007
+ 1561 01b6 0E       		.uleb128 0xe
+ 1562 01b7 03       		.uleb128 0x3
+ 1563 01b8 0E       		.uleb128 0xe
+ 1564 01b9 3A       		.uleb128 0x3a
+ 1565 01ba 0B       		.uleb128 0xb
+ 1566 01bb 3B       		.uleb128 0x3b
+ 1567 01bc 0B       		.uleb128 0xb
+ 1568 01bd 00       		.byte	0
+ 1569 01be 00       		.byte	0
+ 1570 01bf 00       		.byte	0
+ 1571              		.section	.debug_loc,"",%progbits
+ 1572              	.Ldebug_loc0:
+ 1573              	.LLST2:
+ 1574 0000 18000000 		.4byte	.LFB113-.Ltext0
+ 1575 0004 1A000000 		.4byte	.LCFI0-.Ltext0
+ 1576 0008 0200     		.2byte	0x2
+ 1577 000a 7D       		.byte	0x7d
+ 1578 000b 00       		.sleb128 0
+ 1579 000c 1A000000 		.4byte	.LCFI0-.Ltext0
+ 1580 0010 34000000 		.4byte	.LFE113-.Ltext0
+ 1581 0014 0200     		.2byte	0x2
+ 1582 0016 7D       		.byte	0x7d
+ 1583 0017 08       		.sleb128 8
+ 1584 0018 00000000 		.4byte	0
+ 1585 001c 00000000 		.4byte	0
+ 1586              	.LLST3:
+ 1587 0020 18000000 		.4byte	.LVL4-.Ltext0
+ 1588 0024 1E000000 		.4byte	.LVL5-.Ltext0
+ 1589 0028 0100     		.2byte	0x1
+ 1590 002a 50       		.byte	0x50
+ 1591 002b 1E000000 		.4byte	.LVL5-.Ltext0
+ 1592 002f 34000000 		.4byte	.LFE113-.Ltext0
+ 1593 0033 0400     		.2byte	0x4
+ 1594 0035 F3       		.byte	0xf3
+ 1595 0036 01       		.uleb128 0x1
+ 1596 0037 50       		.byte	0x50
+ 1597 0038 9F       		.byte	0x9f
+ 1598 0039 00000000 		.4byte	0
+ 1599 003d 00000000 		.4byte	0
+ 1600              	.LLST4:
+ 1601 0041 18000000 		.4byte	.LVL4-.Ltext0
+ 1602 0045 22000000 		.4byte	.LVL6-.Ltext0
+ 1603 0049 0100     		.2byte	0x1
+ 1604 004b 51       		.byte	0x51
+ARM GAS  /tmp/ccDi7Mwx.s 			page 35
+
+
+ 1605 004c 22000000 		.4byte	.LVL6-.Ltext0
+ 1606 0050 25000000 		.4byte	.LVL7-1-.Ltext0
+ 1607 0054 0100     		.2byte	0x1
+ 1608 0056 52       		.byte	0x52
+ 1609 0057 25000000 		.4byte	.LVL7-1-.Ltext0
+ 1610 005b 34000000 		.4byte	.LFE113-.Ltext0
+ 1611 005f 0400     		.2byte	0x4
+ 1612 0061 F3       		.byte	0xf3
+ 1613 0062 01       		.uleb128 0x1
+ 1614 0063 51       		.byte	0x51
+ 1615 0064 9F       		.byte	0x9f
+ 1616 0065 00000000 		.4byte	0
+ 1617 0069 00000000 		.4byte	0
+ 1618              	.LLST1:
+ 1619 006d 0C000000 		.4byte	.LVL2-.Ltext0
+ 1620 0071 12000000 		.4byte	.LVL3-.Ltext0
+ 1621 0075 0100     		.2byte	0x1
+ 1622 0077 50       		.byte	0x50
+ 1623 0078 12000000 		.4byte	.LVL3-.Ltext0
+ 1624 007c 18000000 		.4byte	.LFE111-.Ltext0
+ 1625 0080 0400     		.2byte	0x4
+ 1626 0082 F3       		.byte	0xf3
+ 1627 0083 01       		.uleb128 0x1
+ 1628 0084 50       		.byte	0x50
+ 1629 0085 9F       		.byte	0x9f
+ 1630 0086 00000000 		.4byte	0
+ 1631 008a 00000000 		.4byte	0
+ 1632              	.LLST0:
+ 1633 008e 00000000 		.4byte	.LVL0-.Ltext0
+ 1634 0092 06000000 		.4byte	.LVL1-.Ltext0
+ 1635 0096 0100     		.2byte	0x1
+ 1636 0098 50       		.byte	0x50
+ 1637 0099 06000000 		.4byte	.LVL1-.Ltext0
+ 1638 009d 0C000000 		.4byte	.LFE110-.Ltext0
+ 1639 00a1 0400     		.2byte	0x4
+ 1640 00a3 F3       		.byte	0xf3
+ 1641 00a4 01       		.uleb128 0x1
+ 1642 00a5 50       		.byte	0x50
+ 1643 00a6 9F       		.byte	0x9f
+ 1644 00a7 00000000 		.4byte	0
+ 1645 00ab 00000000 		.4byte	0
+ 1646              	.LLST5:
+ 1647 00af 34000000 		.4byte	.LFB112-.Ltext0
+ 1648 00b3 38000000 		.4byte	.LCFI1-.Ltext0
+ 1649 00b7 0200     		.2byte	0x2
+ 1650 00b9 7D       		.byte	0x7d
+ 1651 00ba 00       		.sleb128 0
+ 1652 00bb 38000000 		.4byte	.LCFI1-.Ltext0
+ 1653 00bf 58000000 		.4byte	.LFE112-.Ltext0
+ 1654 00c3 0200     		.2byte	0x2
+ 1655 00c5 7D       		.byte	0x7d
+ 1656 00c6 08       		.sleb128 8
+ 1657 00c7 00000000 		.4byte	0
+ 1658 00cb 00000000 		.4byte	0
+ 1659              	.LLST6:
+ 1660 00cf 34000000 		.4byte	.LVL8-.Ltext0
+ 1661 00d3 3E000000 		.4byte	.LVL11-.Ltext0
+ARM GAS  /tmp/ccDi7Mwx.s 			page 36
+
+
+ 1662 00d7 0100     		.2byte	0x1
+ 1663 00d9 50       		.byte	0x50
+ 1664 00da 3E000000 		.4byte	.LVL11-.Ltext0
+ 1665 00de 46000000 		.4byte	.LVL13-.Ltext0
+ 1666 00e2 0400     		.2byte	0x4
+ 1667 00e4 F3       		.byte	0xf3
+ 1668 00e5 01       		.uleb128 0x1
+ 1669 00e6 50       		.byte	0x50
+ 1670 00e7 9F       		.byte	0x9f
+ 1671 00e8 46000000 		.4byte	.LVL13-.Ltext0
+ 1672 00ec 48000000 		.4byte	.LVL14-.Ltext0
+ 1673 00f0 0100     		.2byte	0x1
+ 1674 00f2 50       		.byte	0x50
+ 1675 00f3 48000000 		.4byte	.LVL14-.Ltext0
+ 1676 00f7 58000000 		.4byte	.LFE112-.Ltext0
+ 1677 00fb 0400     		.2byte	0x4
+ 1678 00fd F3       		.byte	0xf3
+ 1679 00fe 01       		.uleb128 0x1
+ 1680 00ff 50       		.byte	0x50
+ 1681 0100 9F       		.byte	0x9f
+ 1682 0101 00000000 		.4byte	0
+ 1683 0105 00000000 		.4byte	0
+ 1684              	.LLST7:
+ 1685 0109 34000000 		.4byte	.LVL8-.Ltext0
+ 1686 010d 3A000000 		.4byte	.LVL9-.Ltext0
+ 1687 0111 0100     		.2byte	0x1
+ 1688 0113 51       		.byte	0x51
+ 1689 0114 3A000000 		.4byte	.LVL9-.Ltext0
+ 1690 0118 41000000 		.4byte	.LVL12-1-.Ltext0
+ 1691 011c 0100     		.2byte	0x1
+ 1692 011e 52       		.byte	0x52
+ 1693 011f 41000000 		.4byte	.LVL12-1-.Ltext0
+ 1694 0123 46000000 		.4byte	.LVL13-.Ltext0
+ 1695 0127 0400     		.2byte	0x4
+ 1696 0129 F3       		.byte	0xf3
+ 1697 012a 01       		.uleb128 0x1
+ 1698 012b 51       		.byte	0x51
+ 1699 012c 9F       		.byte	0x9f
+ 1700 012d 46000000 		.4byte	.LVL13-.Ltext0
+ 1701 0131 58000000 		.4byte	.LFE112-.Ltext0
+ 1702 0135 0100     		.2byte	0x1
+ 1703 0137 52       		.byte	0x52
+ 1704 0138 00000000 		.4byte	0
+ 1705 013c 00000000 		.4byte	0
+ 1706              	.LLST8:
+ 1707 0140 3C000000 		.4byte	.LVL10-.Ltext0
+ 1708 0144 3E000000 		.4byte	.LVL11-.Ltext0
+ 1709 0148 0200     		.2byte	0x2
+ 1710 014a 30       		.byte	0x30
+ 1711 014b 9F       		.byte	0x9f
+ 1712 014c 00000000 		.4byte	0
+ 1713 0150 00000000 		.4byte	0
+ 1714              	.LLST9:
+ 1715 0154 3C000000 		.4byte	.LVL10-.Ltext0
+ 1716 0158 3E000000 		.4byte	.LVL11-.Ltext0
+ 1717 015c 0100     		.2byte	0x1
+ 1718 015e 52       		.byte	0x52
+ARM GAS  /tmp/ccDi7Mwx.s 			page 37
+
+
+ 1719 015f 00000000 		.4byte	0
+ 1720 0163 00000000 		.4byte	0
+ 1721              	.LLST10:
+ 1722 0167 58000000 		.4byte	.LFB114-.Ltext0
+ 1723 016b 5C000000 		.4byte	.LCFI2-.Ltext0
+ 1724 016f 0200     		.2byte	0x2
+ 1725 0171 7D       		.byte	0x7d
+ 1726 0172 00       		.sleb128 0
+ 1727 0173 5C000000 		.4byte	.LCFI2-.Ltext0
+ 1728 0177 7C000000 		.4byte	.LFE114-.Ltext0
+ 1729 017b 0200     		.2byte	0x2
+ 1730 017d 7D       		.byte	0x7d
+ 1731 017e 08       		.sleb128 8
+ 1732 017f 00000000 		.4byte	0
+ 1733 0183 00000000 		.4byte	0
+ 1734              	.LLST11:
+ 1735 0187 58000000 		.4byte	.LVL15-.Ltext0
+ 1736 018b 62000000 		.4byte	.LVL18-.Ltext0
+ 1737 018f 0100     		.2byte	0x1
+ 1738 0191 50       		.byte	0x50
+ 1739 0192 62000000 		.4byte	.LVL18-.Ltext0
+ 1740 0196 6A000000 		.4byte	.LVL20-.Ltext0
+ 1741 019a 0400     		.2byte	0x4
+ 1742 019c F3       		.byte	0xf3
+ 1743 019d 01       		.uleb128 0x1
+ 1744 019e 50       		.byte	0x50
+ 1745 019f 9F       		.byte	0x9f
+ 1746 01a0 6A000000 		.4byte	.LVL20-.Ltext0
+ 1747 01a4 6C000000 		.4byte	.LVL21-.Ltext0
+ 1748 01a8 0100     		.2byte	0x1
+ 1749 01aa 50       		.byte	0x50
+ 1750 01ab 6C000000 		.4byte	.LVL21-.Ltext0
+ 1751 01af 7C000000 		.4byte	.LFE114-.Ltext0
+ 1752 01b3 0400     		.2byte	0x4
+ 1753 01b5 F3       		.byte	0xf3
+ 1754 01b6 01       		.uleb128 0x1
+ 1755 01b7 50       		.byte	0x50
+ 1756 01b8 9F       		.byte	0x9f
+ 1757 01b9 00000000 		.4byte	0
+ 1758 01bd 00000000 		.4byte	0
+ 1759              	.LLST12:
+ 1760 01c1 58000000 		.4byte	.LVL15-.Ltext0
+ 1761 01c5 5E000000 		.4byte	.LVL16-.Ltext0
+ 1762 01c9 0100     		.2byte	0x1
+ 1763 01cb 51       		.byte	0x51
+ 1764 01cc 5E000000 		.4byte	.LVL16-.Ltext0
+ 1765 01d0 65000000 		.4byte	.LVL19-1-.Ltext0
+ 1766 01d4 0100     		.2byte	0x1
+ 1767 01d6 52       		.byte	0x52
+ 1768 01d7 65000000 		.4byte	.LVL19-1-.Ltext0
+ 1769 01db 6A000000 		.4byte	.LVL20-.Ltext0
+ 1770 01df 0400     		.2byte	0x4
+ 1771 01e1 F3       		.byte	0xf3
+ 1772 01e2 01       		.uleb128 0x1
+ 1773 01e3 51       		.byte	0x51
+ 1774 01e4 9F       		.byte	0x9f
+ 1775 01e5 6A000000 		.4byte	.LVL20-.Ltext0
+ARM GAS  /tmp/ccDi7Mwx.s 			page 38
+
+
+ 1776 01e9 7C000000 		.4byte	.LFE114-.Ltext0
+ 1777 01ed 0100     		.2byte	0x1
+ 1778 01ef 52       		.byte	0x52
+ 1779 01f0 00000000 		.4byte	0
+ 1780 01f4 00000000 		.4byte	0
+ 1781              	.LLST13:
+ 1782 01f8 60000000 		.4byte	.LVL17-.Ltext0
+ 1783 01fc 62000000 		.4byte	.LVL18-.Ltext0
+ 1784 0200 0200     		.2byte	0x2
+ 1785 0202 30       		.byte	0x30
+ 1786 0203 9F       		.byte	0x9f
+ 1787 0204 00000000 		.4byte	0
+ 1788 0208 00000000 		.4byte	0
+ 1789              	.LLST14:
+ 1790 020c 60000000 		.4byte	.LVL17-.Ltext0
+ 1791 0210 62000000 		.4byte	.LVL18-.Ltext0
+ 1792 0214 0100     		.2byte	0x1
+ 1793 0216 52       		.byte	0x52
+ 1794 0217 00000000 		.4byte	0
+ 1795 021b 00000000 		.4byte	0
+ 1796              	.LLST15:
+ 1797 021f 7C000000 		.4byte	.LFB115-.Ltext0
+ 1798 0223 7E000000 		.4byte	.LCFI3-.Ltext0
+ 1799 0227 0200     		.2byte	0x2
+ 1800 0229 7D       		.byte	0x7d
+ 1801 022a 00       		.sleb128 0
+ 1802 022b 7E000000 		.4byte	.LCFI3-.Ltext0
+ 1803 022f 98000000 		.4byte	.LFE115-.Ltext0
+ 1804 0233 0200     		.2byte	0x2
+ 1805 0235 7D       		.byte	0x7d
+ 1806 0236 08       		.sleb128 8
+ 1807 0237 00000000 		.4byte	0
+ 1808 023b 00000000 		.4byte	0
+ 1809              	.LLST16:
+ 1810 023f 7C000000 		.4byte	.LVL22-.Ltext0
+ 1811 0243 82000000 		.4byte	.LVL23-.Ltext0
+ 1812 0247 0100     		.2byte	0x1
+ 1813 0249 50       		.byte	0x50
+ 1814 024a 82000000 		.4byte	.LVL23-.Ltext0
+ 1815 024e 98000000 		.4byte	.LFE115-.Ltext0
+ 1816 0252 0400     		.2byte	0x4
+ 1817 0254 F3       		.byte	0xf3
+ 1818 0255 01       		.uleb128 0x1
+ 1819 0256 50       		.byte	0x50
+ 1820 0257 9F       		.byte	0x9f
+ 1821 0258 00000000 		.4byte	0
+ 1822 025c 00000000 		.4byte	0
+ 1823              	.LLST17:
+ 1824 0260 7C000000 		.4byte	.LVL22-.Ltext0
+ 1825 0264 86000000 		.4byte	.LVL24-.Ltext0
+ 1826 0268 0100     		.2byte	0x1
+ 1827 026a 51       		.byte	0x51
+ 1828 026b 86000000 		.4byte	.LVL24-.Ltext0
+ 1829 026f 89000000 		.4byte	.LVL25-1-.Ltext0
+ 1830 0273 0100     		.2byte	0x1
+ 1831 0275 52       		.byte	0x52
+ 1832 0276 89000000 		.4byte	.LVL25-1-.Ltext0
+ARM GAS  /tmp/ccDi7Mwx.s 			page 39
+
+
+ 1833 027a 98000000 		.4byte	.LFE115-.Ltext0
+ 1834 027e 0400     		.2byte	0x4
+ 1835 0280 F3       		.byte	0xf3
+ 1836 0281 01       		.uleb128 0x1
+ 1837 0282 51       		.byte	0x51
+ 1838 0283 9F       		.byte	0x9f
+ 1839 0284 00000000 		.4byte	0
+ 1840 0288 00000000 		.4byte	0
+ 1841              	.LLST18:
+ 1842 028c 7C000000 		.4byte	.LVL22-.Ltext0
+ 1843 0290 86000000 		.4byte	.LVL24-.Ltext0
+ 1844 0294 0100     		.2byte	0x1
+ 1845 0296 51       		.byte	0x51
+ 1846 0297 86000000 		.4byte	.LVL24-.Ltext0
+ 1847 029b 89000000 		.4byte	.LVL25-1-.Ltext0
+ 1848 029f 0100     		.2byte	0x1
+ 1849 02a1 52       		.byte	0x52
+ 1850 02a2 89000000 		.4byte	.LVL25-1-.Ltext0
+ 1851 02a6 98000000 		.4byte	.LFE115-.Ltext0
+ 1852 02aa 0400     		.2byte	0x4
+ 1853 02ac F3       		.byte	0xf3
+ 1854 02ad 01       		.uleb128 0x1
+ 1855 02ae 51       		.byte	0x51
+ 1856 02af 9F       		.byte	0x9f
+ 1857 02b0 00000000 		.4byte	0
+ 1858 02b4 00000000 		.4byte	0
+ 1859              	.LLST19:
+ 1860 02b8 98000000 		.4byte	.LFB116-.Ltext0
+ 1861 02bc 9A000000 		.4byte	.LCFI4-.Ltext0
+ 1862 02c0 0200     		.2byte	0x2
+ 1863 02c2 7D       		.byte	0x7d
+ 1864 02c3 00       		.sleb128 0
+ 1865 02c4 9A000000 		.4byte	.LCFI4-.Ltext0
+ 1866 02c8 B4000000 		.4byte	.LFE116-.Ltext0
+ 1867 02cc 0200     		.2byte	0x2
+ 1868 02ce 7D       		.byte	0x7d
+ 1869 02cf 08       		.sleb128 8
+ 1870 02d0 00000000 		.4byte	0
+ 1871 02d4 00000000 		.4byte	0
+ 1872              	.LLST20:
+ 1873 02d8 98000000 		.4byte	.LVL26-.Ltext0
+ 1874 02dc 9E000000 		.4byte	.LVL27-.Ltext0
+ 1875 02e0 0100     		.2byte	0x1
+ 1876 02e2 50       		.byte	0x50
+ 1877 02e3 9E000000 		.4byte	.LVL27-.Ltext0
+ 1878 02e7 B4000000 		.4byte	.LFE116-.Ltext0
+ 1879 02eb 0400     		.2byte	0x4
+ 1880 02ed F3       		.byte	0xf3
+ 1881 02ee 01       		.uleb128 0x1
+ 1882 02ef 50       		.byte	0x50
+ 1883 02f0 9F       		.byte	0x9f
+ 1884 02f1 00000000 		.4byte	0
+ 1885 02f5 00000000 		.4byte	0
+ 1886              	.LLST21:
+ 1887 02f9 98000000 		.4byte	.LVL26-.Ltext0
+ 1888 02fd A2000000 		.4byte	.LVL28-.Ltext0
+ 1889 0301 0100     		.2byte	0x1
+ARM GAS  /tmp/ccDi7Mwx.s 			page 40
+
+
+ 1890 0303 51       		.byte	0x51
+ 1891 0304 A2000000 		.4byte	.LVL28-.Ltext0
+ 1892 0308 A5000000 		.4byte	.LVL29-1-.Ltext0
+ 1893 030c 0100     		.2byte	0x1
+ 1894 030e 52       		.byte	0x52
+ 1895 030f A5000000 		.4byte	.LVL29-1-.Ltext0
+ 1896 0313 B4000000 		.4byte	.LFE116-.Ltext0
+ 1897 0317 0400     		.2byte	0x4
+ 1898 0319 F3       		.byte	0xf3
+ 1899 031a 01       		.uleb128 0x1
+ 1900 031b 51       		.byte	0x51
+ 1901 031c 9F       		.byte	0x9f
+ 1902 031d 00000000 		.4byte	0
+ 1903 0321 00000000 		.4byte	0
+ 1904              	.LLST22:
+ 1905 0325 98000000 		.4byte	.LVL26-.Ltext0
+ 1906 0329 A2000000 		.4byte	.LVL28-.Ltext0
+ 1907 032d 0100     		.2byte	0x1
+ 1908 032f 51       		.byte	0x51
+ 1909 0330 A2000000 		.4byte	.LVL28-.Ltext0
+ 1910 0334 A5000000 		.4byte	.LVL29-1-.Ltext0
+ 1911 0338 0100     		.2byte	0x1
+ 1912 033a 52       		.byte	0x52
+ 1913 033b A5000000 		.4byte	.LVL29-1-.Ltext0
+ 1914 033f B4000000 		.4byte	.LFE116-.Ltext0
+ 1915 0343 0400     		.2byte	0x4
+ 1916 0345 F3       		.byte	0xf3
+ 1917 0346 01       		.uleb128 0x1
+ 1918 0347 51       		.byte	0x51
+ 1919 0348 9F       		.byte	0x9f
+ 1920 0349 00000000 		.4byte	0
+ 1921 034d 00000000 		.4byte	0
+ 1922              		.section	.debug_aranges,"",%progbits
+ 1923 0000 1C000000 		.4byte	0x1c
+ 1924 0004 0200     		.2byte	0x2
+ 1925 0006 00000000 		.4byte	.Ldebug_info0
+ 1926 000a 04       		.byte	0x4
+ 1927 000b 00       		.byte	0
+ 1928 000c 0000     		.2byte	0
+ 1929 000e 0000     		.2byte	0
+ 1930 0010 00000000 		.4byte	.Ltext0
+ 1931 0014 B4000000 		.4byte	.Letext0-.Ltext0
+ 1932 0018 00000000 		.4byte	0
+ 1933 001c 00000000 		.4byte	0
+ 1934              		.section	.debug_ranges,"",%progbits
+ 1935              	.Ldebug_ranges0:
+ 1936 0000 38000000 		.4byte	.LBB4-.Ltext0
+ 1937 0004 3A000000 		.4byte	.LBE4-.Ltext0
+ 1938 0008 3C000000 		.4byte	.LBB7-.Ltext0
+ 1939 000c 3E000000 		.4byte	.LBE7-.Ltext0
+ 1940 0010 00000000 		.4byte	0
+ 1941 0014 00000000 		.4byte	0
+ 1942 0018 5C000000 		.4byte	.LBB10-.Ltext0
+ 1943 001c 5E000000 		.4byte	.LBE10-.Ltext0
+ 1944 0020 60000000 		.4byte	.LBB13-.Ltext0
+ 1945 0024 62000000 		.4byte	.LBE13-.Ltext0
+ 1946 0028 00000000 		.4byte	0
+ARM GAS  /tmp/ccDi7Mwx.s 			page 41
+
+
+ 1947 002c 00000000 		.4byte	0
+ 1948              		.section	.debug_line,"",%progbits
+ 1949              	.Ldebug_line0:
+ 1950 0000 8E010000 		.section	.debug_str,"MS",%progbits,1
+ 1950      02005001 
+ 1950      00000201 
+ 1950      FB0E0D00 
+ 1950      01010101 
+ 1951              	.LASF3:
+ 1952 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1952      6E74385F 
+ 1952      7400
+ 1953              	.LASF33:
+ 1954 000a 73706565 		.ascii	"speed\000"
+ 1954      6400
+ 1955              	.LASF45:
+ 1956 0010 5F446576 		.ascii	"_Device_TypeDef\000"
+ 1956      6963655F 
+ 1956      54797065 
+ 1956      44656600 
+ 1957              	.LASF6:
+ 1958 0020 5F5F696E 		.ascii	"__int32_t\000"
+ 1958      7433325F 
+ 1958      7400
+ 1959              	.LASF7:
+ 1960 002a 6C6F6E67 		.ascii	"long int\000"
+ 1960      20696E74 
+ 1960      00
+ 1961              	.LASF22:
+ 1962 0033 47657450 		.ascii	"GetProductStrDescriptor\000"
+ 1962      726F6475 
+ 1962      63745374 
+ 1962      72446573 
+ 1962      63726970 
+ 1963              	.LASF28:
+ 1964 004b 55534244 		.ascii	"USBD_StrDesc\000"
+ 1964      5F537472 
+ 1964      44657363 
+ 1964      00
+ 1965              	.LASF42:
+ 1966 0058 474E5520 		.ascii	"GNU C11 7.2.1 20170904 (release) [ARM/embedded-7-br"
+ 1966      43313120 
+ 1966      372E322E 
+ 1966      31203230 
+ 1966      31373039 
+ 1967 008b 616E6368 		.ascii	"anch revision 255204] -mcpu=cortex-m4 -mthumb -g -g"
+ 1967      20726576 
+ 1967      6973696F 
+ 1967      6E203235 
+ 1967      35323034 
+ 1968 00be 64776172 		.ascii	"dwarf-2 -Os -fomit-frame-pointer\000"
+ 1968      662D3220 
+ 1968      2D4F7320 
+ 1968      2D666F6D 
+ 1968      69742D66 
+ 1969              	.LASF39:
+ 1970 00df 55534244 		.ascii	"USBD_USR_ManufacturerStrDescriptor\000"
+ARM GAS  /tmp/ccDi7Mwx.s 			page 42
+
+
+ 1970      5F555352 
+ 1970      5F4D616E 
+ 1970      75666163 
+ 1970      74757265 
+ 1971              	.LASF1:
+ 1972 0102 756E7369 		.ascii	"unsigned char\000"
+ 1972      676E6564 
+ 1972      20636861 
+ 1972      7200
+ 1973              	.LASF35:
+ 1974 0110 55534244 		.ascii	"USBD_USR_InterfaceStrDescriptor\000"
+ 1974      5F555352 
+ 1974      5F496E74 
+ 1974      65726661 
+ 1974      63655374 
+ 1975              	.LASF26:
+ 1976 0130 55534244 		.ascii	"USBD_DEVICE\000"
+ 1976      5F444556 
+ 1976      49434500 
+ 1977              	.LASF5:
+ 1978 013c 73686F72 		.ascii	"short unsigned int\000"
+ 1978      7420756E 
+ 1978      7369676E 
+ 1978      65642069 
+ 1978      6E7400
+ 1979              	.LASF21:
+ 1980 014f 4765744D 		.ascii	"GetManufacturerStrDescriptor\000"
+ 1980      616E7566 
+ 1980      61637475 
+ 1980      72657253 
+ 1980      74724465 
+ 1981              	.LASF17:
+ 1982 016c 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1982      52784275 
+ 1982      66666572 
+ 1982      00
+ 1983              	.LASF27:
+ 1984 0179 55534244 		.ascii	"USBD_DeviceDesc\000"
+ 1984      5F446576 
+ 1984      69636544 
+ 1984      65736300 
+ 1985              	.LASF19:
+ 1986 0189 47657444 		.ascii	"GetDeviceDescriptor\000"
+ 1986      65766963 
+ 1986      65446573 
+ 1986      63726970 
+ 1986      746F7200 
+ 1987              	.LASF4:
+ 1988 019d 5F5F7569 		.ascii	"__uint16_t\000"
+ 1988      6E743136 
+ 1988      5F7400
+ 1989              	.LASF9:
+ 1990 01a8 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1990      20756E73 
+ 1990      69676E65 
+ 1990      6420696E 
+ 1990      7400
+ARM GAS  /tmp/ccDi7Mwx.s 			page 43
+
+
+ 1991              	.LASF37:
+ 1992 01ba 55534244 		.ascii	"USBD_USR_SerialStrDescriptor\000"
+ 1992      5F555352 
+ 1992      5F536572 
+ 1992      69616C53 
+ 1992      74724465 
+ 1993              	.LASF29:
+ 1994 01d7 55534244 		.ascii	"USBD_OtherSpeedCfgDesc\000"
+ 1994      5F4F7468 
+ 1994      65725370 
+ 1994      65656443 
+ 1994      66674465 
+ 1995              	.LASF8:
+ 1996 01ee 5F5F7569 		.ascii	"__uint32_t\000"
+ 1996      6E743332 
+ 1996      5F7400
+ 1997              	.LASF46:
+ 1998 01f9 55534244 		.ascii	"USBD_GetString\000"
+ 1998      5F476574 
+ 1998      53747269 
+ 1998      6E6700
+ 1999              	.LASF44:
+ 2000 0208 2F686F6D 		.ascii	"/home/sticky/Projects/stuff/stm32f4_usb\000"
+ 2000      652F7374 
+ 2000      69636B79 
+ 2000      2F50726F 
+ 2000      6A656374 
+ 2001              	.LASF12:
+ 2002 0230 756E7369 		.ascii	"unsigned int\000"
+ 2002      676E6564 
+ 2002      20696E74 
+ 2002      00
+ 2003              	.LASF11:
+ 2004 023d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2004      206C6F6E 
+ 2004      6720756E 
+ 2004      7369676E 
+ 2004      65642069 
+ 2005              	.LASF13:
+ 2006 0254 75696E74 		.ascii	"uint8_t\000"
+ 2006      385F7400 
+ 2007              	.LASF36:
+ 2008 025c 55534244 		.ascii	"USBD_USR_ConfigStrDescriptor\000"
+ 2008      5F555352 
+ 2008      5F436F6E 
+ 2008      66696753 
+ 2008      74724465 
+ 2009              	.LASF40:
+ 2010 0279 55534244 		.ascii	"USBD_USR_LangIDStrDescriptor\000"
+ 2010      5F555352 
+ 2010      5F4C616E 
+ 2010      67494453 
+ 2010      74724465 
+ 2011              	.LASF24:
+ 2012 0296 47657443 		.ascii	"GetConfigurationStrDescriptor\000"
+ 2012      6F6E6669 
+ 2012      67757261 
+ARM GAS  /tmp/ccDi7Mwx.s 			page 44
+
+
+ 2012      74696F6E 
+ 2012      53747244 
+ 2013              	.LASF41:
+ 2014 02b4 55534244 		.ascii	"USBD_USR_DeviceDescriptor\000"
+ 2014      5F555352 
+ 2014      5F446576 
+ 2014      69636544 
+ 2014      65736372 
+ 2015              	.LASF32:
+ 2016 02ce 5553525F 		.ascii	"USR_desc\000"
+ 2016      64657363 
+ 2016      00
+ 2017              	.LASF15:
+ 2018 02d7 696E7433 		.ascii	"int32_t\000"
+ 2018      325F7400 
+ 2019              	.LASF10:
+ 2020 02df 6C6F6E67 		.ascii	"long long int\000"
+ 2020      206C6F6E 
+ 2020      6720696E 
+ 2020      7400
+ 2021              	.LASF18:
+ 2022 02ed 53797374 		.ascii	"SystemCoreClock\000"
+ 2022      656D436F 
+ 2022      7265436C 
+ 2022      6F636B00 
+ 2023              	.LASF23:
+ 2024 02fd 47657453 		.ascii	"GetSerialStrDescriptor\000"
+ 2024      65726961 
+ 2024      6C537472 
+ 2024      44657363 
+ 2024      72697074 
+ 2025              	.LASF25:
+ 2026 0314 47657449 		.ascii	"GetInterfaceStrDescriptor\000"
+ 2026      6E746572 
+ 2026      66616365 
+ 2026      53747244 
+ 2026      65736372 
+ 2027              	.LASF2:
+ 2028 032e 73686F72 		.ascii	"short int\000"
+ 2028      7420696E 
+ 2028      7400
+ 2029              	.LASF14:
+ 2030 0338 75696E74 		.ascii	"uint16_t\000"
+ 2030      31365F74 
+ 2030      00
+ 2031              	.LASF16:
+ 2032 0341 75696E74 		.ascii	"uint32_t\000"
+ 2032      33325F74 
+ 2032      00
+ 2033              	.LASF31:
+ 2034 034a 55534244 		.ascii	"USBD_LangIDDesc\000"
+ 2034      5F4C616E 
+ 2034      67494444 
+ 2034      65736300 
+ 2035              	.LASF30:
+ 2036 035a 55534244 		.ascii	"USBD_DeviceQualifierDesc\000"
+ 2036      5F446576 
+ARM GAS  /tmp/ccDi7Mwx.s 			page 45
+
+
+ 2036      69636551 
+ 2036      75616C69 
+ 2036      66696572 
+ 2037              	.LASF43:
+ 2038 0373 696E632F 		.ascii	"inc/user_libs/usbd_desc.c\000"
+ 2038      75736572 
+ 2038      5F6C6962 
+ 2038      732F7573 
+ 2038      62645F64 
+ 2039              	.LASF0:
+ 2040 038d 7369676E 		.ascii	"signed char\000"
+ 2040      65642063 
+ 2040      68617200 
+ 2041              	.LASF20:
+ 2042 0399 4765744C 		.ascii	"GetLangIDStrDescriptor\000"
+ 2042      616E6749 
+ 2042      44537472 
+ 2042      44657363 
+ 2042      72697074 
+ 2043              	.LASF34:
+ 2044 03b0 6C656E67 		.ascii	"length\000"
+ 2044      746800
+ 2045              	.LASF38:
+ 2046 03b7 55534244 		.ascii	"USBD_USR_ProductStrDescriptor\000"
+ 2046      5F555352 
+ 2046      5F50726F 
+ 2046      64756374 
+ 2046      53747244 
+ 2047              		.ident	"GCC: (GNU Tools for Arm Embedded Processors 7-2017-q4-major) 7.2.1 20170904 (release) [ARM
+ARM GAS  /tmp/ccDi7Mwx.s 			page 46
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 usbd_desc.c
+     /tmp/ccDi7Mwx.s:74     .text:0000000000000000 $t
+     /tmp/ccDi7Mwx.s:81     .text:0000000000000000 USBD_USR_DeviceDescriptor
+     /tmp/ccDi7Mwx.s:102    .text:0000000000000008 $d
+     /tmp/ccDi7Mwx.s:106    .text:000000000000000c $t
+     /tmp/ccDi7Mwx.s:113    .text:000000000000000c USBD_USR_LangIDStrDescriptor
+     /tmp/ccDi7Mwx.s:133    .text:0000000000000014 $d
+     /tmp/ccDi7Mwx.s:137    .text:0000000000000018 $t
+     /tmp/ccDi7Mwx.s:144    .text:0000000000000018 USBD_USR_ManufacturerStrDescriptor
+     /tmp/ccDi7Mwx.s:173    .text:000000000000002c $d
+     /tmp/ccDi7Mwx.s:178    .text:0000000000000034 $t
+     /tmp/ccDi7Mwx.s:185    .text:0000000000000034 USBD_USR_ProductStrDescriptor
+     /tmp/ccDi7Mwx.s:237    .text:000000000000004c $d
+     /tmp/ccDi7Mwx.s:243    .text:0000000000000058 $t
+     /tmp/ccDi7Mwx.s:250    .text:0000000000000058 USBD_USR_SerialStrDescriptor
+     /tmp/ccDi7Mwx.s:302    .text:0000000000000070 $d
+     /tmp/ccDi7Mwx.s:308    .text:000000000000007c $t
+     /tmp/ccDi7Mwx.s:315    .text:000000000000007c USBD_USR_ConfigStrDescriptor
+     /tmp/ccDi7Mwx.s:348    .text:0000000000000090 $d
+     /tmp/ccDi7Mwx.s:353    .text:0000000000000098 $t
+     /tmp/ccDi7Mwx.s:360    .text:0000000000000098 USBD_USR_InterfaceStrDescriptor
+     /tmp/ccDi7Mwx.s:393    .text:00000000000000ac $d
+     /tmp/ccDi7Mwx.s:428    .data:0000000000000012 USBD_LangIDDesc
+     /tmp/ccDi7Mwx.s:435    .data:0000000000000016 USBD_DeviceQualifierDesc
+     /tmp/ccDi7Mwx.s:407    .data:0000000000000000 USBD_DeviceDesc
+     /tmp/ccDi7Mwx.s:448    .data:0000000000000020 USR_desc
+     /tmp/ccDi7Mwx.s:403    .data:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+USBD_GetString
+USBD_StrDesc
